@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\User;
-use Helper\MessageError;
 // use App\Helper\MessageError;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -24,7 +23,7 @@ class AdminController extends Controller
         ]);
 
         if($validator->fails()) {
-            return MessageError::message($validator->errors()->messages());
+            return messageError($validator->messages()->toArray());
         }
 
         $user = $validator->validated();
@@ -79,7 +78,7 @@ class AdminController extends Controller
             ]);
     
             if ($validator->fails()) {
-                return MessageError::message($validator->errors()->messages());
+                return messageError($validator->messages()->toArray());
             };
     
             $thumbnail = $request->file('picture');
@@ -135,7 +134,7 @@ class AdminController extends Controller
             ]);
 
             if($validator->fails()) {
-                return MessageError::message($validator->errors()->messages());
+                return messageError($validator->messages()->toArray());
             };
 
             $thumbnail = $request->file('picture');

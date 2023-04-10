@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Candidate;
 use App\Models\Log;
 use App\Models\User;
+use App\Models\Voting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Helper\MessageError;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -23,7 +24,7 @@ class UserController extends Controller
         ]); 
 
         if($validator->fails()) {
-            return MessageError::message($validator->errors()->messages());
+            return messageError($validator->messages()->toArray());
         }
 
         $user = $validator->validated();
@@ -63,7 +64,7 @@ class UserController extends Controller
         ]);
 
         if($validator->fails()) {
-            return MessageError::message($validator->errors()->messages());
+            return messageError($validator->messages()->toArray());
         }
 
         if(Auth::attempt($validator->validated())) {
@@ -145,6 +146,23 @@ class UserController extends Controller
     }
 
     public function vote_candidate_by_id($id) {
-        
+        $candidate = DB::table('candidate')->where('idcandidate', $id)->first();
+
+        if ($candidate !== NULL) {
+            $user = Auth::user();
+            Voting::create([
+                'is_voting' => 1,
+                'nis' => $user->nis,
+                'idcandidate' => $candidate->idcandidate
+            ]);
+
+            return response()->json([
+                "data" => [
+                    'msg' => 'berhasil memilih kandidat'
+                ]   
+            ], 200);
+        }
+
+        return response()->json('kandidat tidak ditemukan', 404);
     }
 }

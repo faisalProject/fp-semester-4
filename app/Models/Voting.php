@@ -11,7 +11,11 @@ class Voting extends Model
 
     protected $table = 'voting';
     protected $primaryKey = 'idvoting';
-    protected $fillable = ['is_voting'];
+    protected $fillable = [
+        'is_voting',
+        'nis',
+        'idcandidate'
+    ];
 
     public function users() {
         return $this->belongsTo(User::class, 'nis', 'nis');

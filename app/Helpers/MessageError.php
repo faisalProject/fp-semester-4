@@ -1,19 +1,17 @@
-<?php
-  namespace Helper;
-
-  class MessageError {
-    public static function message($messages) {
-      if (is_array($messages)) {
-        $res = '';
-        foreach($messages as $key => $value) {
-          $res .= $value[0];
+<?php 
+  if (!function_exists('messageError')) {
+    function messageError($message) {
+      if(is_array($message)) {
+        $responseError = '';
+        
+        foreach($message as $key => $value) {
+          $responseError = $key . ": " . $value[0] . ", "; 
         }
+
+        return response()->json($responseError, 422);
       }
 
-      return response()->json([
-        'status'=> 'error',
-        'message' => $res
-      ], 422);
+      throw new Exception("Message not array typed");
     }
   }
 ?>
