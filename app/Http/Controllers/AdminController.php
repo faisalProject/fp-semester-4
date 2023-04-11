@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\User;
-// use App\Helper\MessageError;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -158,5 +156,53 @@ class AdminController extends Controller
         }
 
         return response()->json("kandidat tidak ditemukan", 404);
+    }
+
+    public function show_candidate() {
+        $candidates = Candidate::with('users')->get();
+
+        $data = [];
+
+        foreach ($candidates as $candidate) {
+            array_push($data, [
+                'idcandidate' => $candidate->idcandidate,
+                'gambar' => $candidate->picture,
+                'nama' => $candidate->users->name,
+                'nis' => $candidate->nis,
+                'email' => $candidate->users->email,
+                'visi' => $candidate->vision,
+                'misi' => $candidate->mission
+            ]);
+        }
+        
+        return response()->json([
+            "data" => [
+                'msg' => 'daftar kandidat',
+                'data' => $data
+            ]
+        ],200);
+    }
+
+    public function show_candidate_by_id($id) {
+        $candidate = Candidate::with('users')->find($id);
+        
+        if($candidate !== NULL) {
+            return response()->json([
+                "data" => [
+                    'msg' => 'detail kandidat',
+                    'data' => [
+                        'idcandidate' => $candidate->idcandidate,
+                        'gambar' => $candidate->picture,
+                        'nama' => $candidate->users->name,
+                        'nis' => $candidate->nis,
+                        'email' => $candidate->users->email,
+                        'visi' => $candidate->vision,
+                        'misi' => $candidate->mission
+                    ]
+                ]
+            ], 200);
+        }
+
+        return response()->json('Kandidat tidak ditemukan', 404);
     }
 }
