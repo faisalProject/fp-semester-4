@@ -166,7 +166,7 @@ class AdminController extends Controller
         foreach ($candidates as $candidate) {
             array_push($data, [
                 'idcandidate' => $candidate->idcandidate,
-                'gambar' => $candidate->picture,
+                'gambar' => url($candidate->picture),
                 'nama' => $candidate->users->name,
                 'nis' => $candidate->nis,
                 'email' => $candidate->users->email,
@@ -192,7 +192,7 @@ class AdminController extends Controller
                     'msg' => 'detail kandidat',
                     'data' => [
                         'idcandidate' => $candidate->idcandidate,
-                        'gambar' => $candidate->picture,
+                        'gambar' => url($candidate->picture),
                         'nama' => $candidate->users->name,
                         'nis' => $candidate->nis,
                         'email' => $candidate->users->email,
