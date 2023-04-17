@@ -64,7 +64,7 @@ class UserController extends Controller
         if ($candidate !== NULL) {
             Voting::create([
                 'is_voting' => '1',
-                'nis' => Auth::user()->nis,
+                'nis' => auth()->user()->nis,
                 'idcandidate' => $candidate->idcandidate
             ]);
 
