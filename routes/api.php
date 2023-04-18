@@ -33,9 +33,11 @@ Route::middleware(['admin.api'])->prefix('admin')->group(function() {
     Route::delete('delete-candidate/{id}', [AdminController::class, 'delete_candidate_by_id']);
     Route::get('show-candidate', [AdminController::class, 'show_candidate']);
     Route::get('show-candidate/{id}', [AdminController::class, 'show_candidate_by_id']);
+    Route::get('show-votes', [AdminController::class, 'show_votes']);
 });
 
 Route::middleware(['user.api'])->prefix('user')->group(function() {
     Route::get('show-candidate', [UserController::class, 'show_candidate']);
     Route::get('show-candidate/{id}', [UserController::class, 'show_candidate_by_id']);
+    Route::post('vote-candidate/{id}', [UserController::class, 'vote_candidate_by_id']);
 });

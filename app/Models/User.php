@@ -58,4 +58,8 @@ class User extends Authenticatable
     public function candidate() {
         return $this->hasMany(Candidate::class, 'nis', 'nis');
     }
+
+    public function voting() {
+        return $this->hasMany(Voting::class, 'nis', 'nis');
+    }
 }

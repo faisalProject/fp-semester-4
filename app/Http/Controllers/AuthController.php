@@ -87,6 +87,7 @@ class AuthController extends Controller
         if(Auth::attempt($validator->validated())) {
             $payload = [
                 'name' => Auth::user()->name,
+                'nis' => Auth::user()->nis, 
                 'role' => Auth::user()->role,
                 'iat' => now()->timestamp,
                 'exp' => now()->timestamp + 7200

@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
+use App\Models\User;
+use App\Models\Voting;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -56,5 +61,41 @@ class UserController extends Controller
         }
 
         return response()->json('kandidate tidak ditemukan', 404);
+    }
+
+    public function vote_candidate_by_id(Request $request, $id) {
+        $candidate = Candidate::find($id);
+
+        if ($candidate !== NULL) {
+            
+            $jwt = $request->bearerToken();
+            $decoded = JWT::decode($jwt, new Key(env('JWT_SECRET_KEY'), 'HS256'));
+
+            $isVoted = Voting::where('nis', $decoded->nis)->exists();
+
+            if($isVoted) {
+                return response()->json('Anda sudah memilih sebelumnya', 400);
+            }
+
+            Voting::create([
+                'nis' => $decoded->nis,
+                'is_vote' => '1',
+                'idcandidate' => $candidate->idcandidate
+            ]);
+            
+            return response()->json([
+                "data" => [
+                    'msg' => 'berahasil memilih kandidat',
+                    'data' => [
+                        'id' => $candidate->idcandidate,
+                        'nama' => $candidate->users->name,
+                        'email' => $candidate->users->email
+                    ]
+                ]
+            ], 200);
+    
+        }
+    
+        return response()->json('kandidat tidak ditemukan', 404);
     }
 }

@@ -253,4 +253,8 @@ class AdminController extends Controller
 
         return response()->json('kandidate tidak ditemukan', 404);
     }
+
+    public function show_votes() {
+        
+    }
 }
