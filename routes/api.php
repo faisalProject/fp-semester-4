@@ -34,6 +34,7 @@ Route::middleware(['admin.api'])->prefix('admin')->group(function() {
     Route::get('show-candidate', [AdminController::class, 'show_candidate']);
     Route::get('show-candidate/{id}', [AdminController::class, 'show_candidate_by_id']);
     Route::get('show-votes', [AdminController::class, 'show_votes']);
+    Route::get('show-votes/{id}', [AdminController::class, 'show_votes_by_id']);
 });
 
 Route::middleware(['user.api'])->prefix('user')->group(function() {

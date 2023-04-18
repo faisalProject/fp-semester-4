@@ -79,9 +79,10 @@ class UserController extends Controller
 
             Voting::create([
                 'nis' => $decoded->nis,
-                'is_vote' => '1',
+                'votes' => 1,
                 'idcandidate' => $candidate->idcandidate
             ]);
+
             
             return response()->json([
                 "data" => [

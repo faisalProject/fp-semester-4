@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\User;
+use App\Models\Voting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -205,7 +206,6 @@ class AdminController extends Controller
 
     public function show_candidate() {
         $candidates = Candidate::with('users')->get();
-        
 
         $data = [];
         foreach($candidates as $candidate) {
@@ -255,6 +255,54 @@ class AdminController extends Controller
     }
 
     public function show_votes() {
-        
+        $candidates = Candidate::with('users')->get();
+
+        $data = [];
+
+        foreach ($candidates as $candidate) {
+            $total_votes = Voting::where('idcandidate', $candidate->idcandidate)->sum('votes');
+            array_push($data, [
+                'idkandidat' => $candidate->idcandidate,
+                'gambar' => url($candidate->picture),
+                'nama' => $candidate->users->name,
+                'nis' => $candidate->nis,
+                'kelas' => $candidate->users->class->class_name,
+                'jumlah_suara' => $total_votes
+            ]);
+
+        }
+        return response()->json([
+            "data" => [
+                'msg' => 'daftar jumlah suara',
+                'data' => $data
+            ]
+        ], 200);
+    }
+
+    public function show_votes_by_id($id) {
+        $candidate = Candidate::with('users')->find($id);
+
+        if ($candidate !== NULL) {
+            $total_votes = Voting::where('idcandidate', $candidate->idcandidate)->sum('votes');
+
+            return response()->json([
+                "data" => [
+                    'msg' => 'detail hasil suara',
+                    'data' => [
+                        'idkandidat' => $candidate->idcandidate,
+                        'gambar' => url($candidate->picture),
+                        'nama' => $candidate->users->name,
+                        'nis' => $candidate->nis,
+                        'kelas' => $candidate->users->class->class_name,
+                        'email' => $candidate->users->email,
+                        'jumlah_suara' => $total_votes,
+                        'created_at' => $candidate->created_at,
+                        'updated_at' => $candidate->updated_at
+                    ]
+                ]
+            ], 200);
+        }
+
+        return response()->json('kandidat tidak ditemukan', 404);
     }
 }
