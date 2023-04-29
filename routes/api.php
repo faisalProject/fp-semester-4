@@ -35,6 +35,7 @@ Route::middleware(['admin.api'])->prefix('admin')->group(function() {
     Route::delete('delete-candidate/{id}', [AdminController::class, 'delete_candidate_by_id']);
     Route::get('show-votes', [AdminController::class, 'show_votes']);
     Route::get('show-votes/{id}', [AdminController::class, 'show_votes_by_id']);
+    Route::post('add-student-data', [AdminController::class, 'add_student_data']);
 });
 
 Route::middleware(['student.api'])->prefix('student')->group(function() {

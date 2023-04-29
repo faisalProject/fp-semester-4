@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\Student;
+use App\Models\StudentData;
 use App\Models\Voting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -270,5 +271,33 @@ class AdminController extends Controller
         }
 
         return response()->json('kandidat tidak ditemukan', 404);
+    }
+
+    public function add_student_data(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'nis' => 'required|max:14|unique:student_data',
+            'name' => 'required',
+            'email' => 'required|email|unique:student_data,email',
+        ]);
+
+        if ($validator->fails()) {
+            return messageError($validator->messages()->toArray());
+        }
+
+        $NisAlreadyExists = StudentData::where('nis', $request->nis)->exists();
+        $emailAlreadyExists = StudentData::where('email', $request->email)->exists();
+
+        if($NisAlreadyExists) {
+            return response()->json('Nis sudah terdaftar', 400);
+        }
+
+        if($emailAlreadyExists) {
+            return response()->json('Email sudah terdaftar', 400);
+        }
+
+        $studentData = $validator->validated();
+        StudentData::create($studentData);
+
+        return response()->json('Berhasil ditambahkan', 200);
     }
 }
