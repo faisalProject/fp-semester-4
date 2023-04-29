@@ -280,10 +280,6 @@ class AdminController extends Controller
             'email' => 'required|email|unique:student_data,email',
         ]);
 
-        if ($validator->fails()) {
-            return messageError($validator->messages()->toArray());
-        }
-
         $NisAlreadyExists = StudentData::where('nis', $request->nis)->exists();
         $emailAlreadyExists = StudentData::where('email', $request->email)->exists();
 
@@ -293,6 +289,10 @@ class AdminController extends Controller
 
         if($emailAlreadyExists) {
             return response()->json('Email sudah terdaftar', 400);
+        }
+
+        if ($validator->fails()) {
+            return messageError($validator->messages()->toArray());
         }
 
         $studentData = $validator->validated();
