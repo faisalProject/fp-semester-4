@@ -300,4 +300,107 @@ class AdminController extends Controller
 
         return response()->json('Berhasil ditambahkan', 200);
     }
+
+    public function show_student_data() {
+        $student_data = StudentData::get();
+
+        $data = [];
+
+        foreach($student_data as $s) {
+            array_push($data, [
+                'id' => $s->id_data,
+                'nis' => $s->nis,
+                'name' => $s->name,
+                'email' => $s->email
+            ]);
+        }
+
+        return response()->json([
+            "data" => [
+                'msg' => 'data siswa',
+                'data' => $data
+            ]
+        ], 200);
+    }
+
+    public function show_student_data_by_id($id) {
+        $student_data = StudentData::find($id);
+
+        if($student_data !== NULL) {
+            return response()->json([
+                "data" => [
+                    'msg' => 'detail data siswa',
+                    'data' => [
+                        'id' => $student_data->id_data,
+                        'nis' => $student_data->nis,
+                        'name' => $student_data->name,
+                        'email' => $student_data->email,
+                        'created_at' => $student_data->created_at,
+                        'updated_at' => $student_data->updated_at
+                    ]
+                ]
+            ], 200);
+        }
+
+        return response()->json('data siswa tidak ditemukan', 404);
+    }
+
+    public function update_student_data_by_id(Request $request, $id) {
+        $student_data = StudentData::find($id);
+
+        if($student_data !== NULL) {
+            $validator = Validator::make($request->all(), [
+                'nis' => 'required|max:14|unique:student_data',
+                'name' => 'required',
+                'email' => 'required|email|unique:student_data,email'
+            ]);
+
+            $NisAlreadyExists = StudentData::where('nis', $request->nis)->exists();
+            $emailAlreadyExists = StudentData::where('email', $request->email)->exists();
+
+            if($NisAlreadyExists) {
+                return response()->json('Nis sudah terdaftar', 400);
+            }
+
+            if($emailAlreadyExists) {
+                return response()->json('Email sudah terdaftar', 400);
+            }
+
+            if ($validator->fails()) {
+                return messageError($validator->messages()->toArray());
+            }
+
+            $studentDataValidate = $validator->validated();
+            StudentData::where('id_data', $id)->update([
+                'id_data' => $student_data->id_data,
+                'nis' => $studentDataValidate['nis'],
+                'name' => $studentDataValidate['name'],
+                'email' => $studentDataValidate['email']
+            ]);
+
+            return response()->json([
+                "data" => [
+                    'msg' => 'data siswa berhasil diupdated'
+                ]
+            ], 200);
+        }
+
+        return response()->json("data siswa tidak ditemukan", 404);
+    }
+
+    public function delete_student_data_by_id($id) {
+        $student_data = StudentData::find($id);
+
+        if($student_data !== NULL) {
+            StudentData::where('id_data', $id)->delete();
+
+            return response()->json([
+                "data" => [
+                    'msg' => 'data siswa berhasil dihapus'
+                ]
+            ], 200);
+        }       
+
+        return response()->json("data siswa tidak ditemukan", 404);
+    }
 }

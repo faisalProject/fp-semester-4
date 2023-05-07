@@ -36,6 +36,10 @@ Route::middleware(['admin.api'])->prefix('admin')->group(function() {
     Route::get('show-votes', [AdminController::class, 'show_votes']);
     Route::get('show-votes/{id}', [AdminController::class, 'show_votes_by_id']);
     Route::post('add-student-data', [AdminController::class, 'add_student_data']);
+    Route::get('show-student-data', [AdminController::class, 'show_student_data']);
+    Route::get('show-student-data/{id}', [AdminController::class, 'show_student_data_by_id']);
+    Route::put('update-student-data/{id}', [AdminController::class, 'update_student_data_by_id']);
+    Route::delete('delete-student-data/{id}', [AdminController::class, 'delete_student_data_by_id']);
 });
 
 Route::middleware(['student.api'])->prefix('student')->group(function() {
