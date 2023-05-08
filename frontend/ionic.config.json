@@ -1,0 +1,7 @@
+{
+  "name": "android-fp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
