@@ -1,0 +1,43 @@
+.about-contents {
+    width: 100%;
+    min-height: 100vh;
+    // border: 1px solid #000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.about-contents > .vision,
+.about-contents > .mission,
+.about-contents > .facility {
+    width: 100%;
+    min-height: 200px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.about-contents > .vision {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.about-contents > .vision > h4,
+.about-contents > .mission > h4 {
+    text-align: center;
+}
+
+.about-contents > .vision > ol,
+.about-contents > .facility > ol {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.about-contents > .vision > ol > li,
+.about-contents > .mission > p {
+    color: #3d3d3d;
+}

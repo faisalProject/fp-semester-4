@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { HomePage } from './home/home.page';
+import { AppModule } from './app.module';
+import { AppPage } from './app/app.page';
+// import { TabsComponent } from './tabs-component';
 
 
 const routes: Routes = [
@@ -19,16 +21,38 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
-  },
-  {
-    path: 'about',
-    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+    path:'',
+    component: AppPage,
+    children:[
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+      },
+      {
+        path: 'about',
+        loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+      },
+      {
+        path: 'candidate',
+        loadChildren:() => import('../app/candidate/candidate.module').then(m => m.CandidatePageModule)
+      },
+      {
+        path: 'candidate-details',
+        loadChildren:() => import('../app/candidate-details/candidate-details.module').then(m => m.CandidateDetailsPageModule)
+      }
+    ]
   },
   {
     path: 'app',
     loadChildren: () => import('./app/app.module').then( m => m.AppPageModule)
+  },
+  {
+    path: 'candidate-details',
+    loadChildren: () => import('./candidate-details/candidate-details.module').then( m => m.CandidateDetailsPageModule)
+  },
+  {
+    path: 'candidate',
+    loadChildren: () => import('./candidate/candidate.module').then( m => m.CandidatePageModule)
   },
 ];
 

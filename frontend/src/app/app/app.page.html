@@ -1,13 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>app</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">app</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="dashboard">
+      <ion-icon name="home"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="candidate">
+      <ion-icon name="people"></ion-icon>
+    </ion-tab-button>
+    <!-- <ion-tab-button tab="candidate-details"> -->
+      <!-- <ion-icon name="person"></ion-icon> -->
+    <!-- </ion-tab-button> -->
+    <ion-tab-button tab="about">
+      <ion-icon name="help-circle"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="logout" (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
