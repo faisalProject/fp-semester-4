@@ -378,6 +378,10 @@ class AdminController extends Controller
                 'email' => $studentDataValidate['email']
             ]);
 
+            Student::where('email', $student_data->email)->update([
+                'email' => $studentDataValidate['email']
+            ]);
+
             return response()->json([
                 "data" => [
                     'msg' => 'data siswa berhasil diupdated'
