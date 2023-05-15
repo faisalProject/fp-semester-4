@@ -309,9 +309,8 @@ class AdminController extends Controller
         foreach($student_data as $s) {
             array_push($data, [
                 'id' => $s->id_data,
-                'nis' => $s->nis,
                 'name' => $s->name,
-                'email' => $s->email
+                'nis' => $s->nis
             ]);
         }
 
