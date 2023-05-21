@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { AppModule } from './app.module';
+
 import { AppPage } from './app/app.page';
-// import { TabsComponent } from './tabs-component';
+
+
 
 
 const routes: Routes = [
@@ -54,6 +55,26 @@ const routes: Routes = [
     path: 'candidate',
     loadChildren: () => import('./candidate/candidate.module').then( m => m.CandidatePageModule)
   },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./admin/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'daftar-akun',
+    loadChildren: () => import('./admin/daftar-akun/daftar-akun.module').then( m => m.DaftarAkunPageModule)
+  },
+  {
+    path: 'tambah-kandidat',
+    loadChildren: () => import('./admin/tambah-kandidat/tambah-kandidat.module').then( m => m.TambahKandidatPageModule)
+  },
+  {
+    path: 'tambah-data-siswa',
+    loadChildren: () => import('./admin/tambah-data-siswa/tambah-data-siswa.module').then( m => m.TambahDataSiswaPageModule)
+  },
+  {
+    path: 'daftar-kandidat',
+    loadChildren: () => import('./admin/daftar-kandidat/daftar-kandidat.module').then( m => m.DaftarKandidatPageModule)
+  }
 ];
 
 @NgModule({
