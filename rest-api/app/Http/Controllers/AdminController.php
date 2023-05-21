@@ -309,9 +309,8 @@ class AdminController extends Controller
         foreach($student_data as $s) {
             array_push($data, [
                 'id' => $s->id_data,
-                'nis' => $s->nis,
                 'name' => $s->name,
-                'email' => $s->email
+                'nis' => $s->nis
             ]);
         }
 
@@ -375,6 +374,10 @@ class AdminController extends Controller
                 'id_data' => $student_data->id_data,
                 'nis' => $studentDataValidate['nis'],
                 'name' => $studentDataValidate['name'],
+                'email' => $studentDataValidate['email']
+            ]);
+
+            Student::where('email', $student_data->email)->update([
                 'email' => $studentDataValidate['email']
             ]);
 
