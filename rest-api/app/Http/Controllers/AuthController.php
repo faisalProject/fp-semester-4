@@ -26,11 +26,17 @@ class AuthController extends Controller
         $studentDataNIS = StudentData::where('nis', $request->nis)->first();
 
         if(!$studentDataNIS) {
-            return response()->json('NIS tidak terdaftar', 401);
+            return response()->json([
+                'msg' => 'NIS tidak terdaftar',
+                'statusCode' => 401
+            ], 401);
         }
         
         if($studentDataNIS->email !== $request->email) {
-            return response()->json('Email tidak terdaftar', 401);
+            return response()->json([
+                'msg' => 'Email tidak terdaftar',
+                'statusCode' => 401
+            ], 401);
         }
 
         $class_name = $request->input('class_name');
@@ -43,7 +49,10 @@ class AuthController extends Controller
             'XI IPS 1', 'XI IPS 2', 'XI IPS 3',
             'XII IPS 1', 'XII IPS 2', 'XII IPS 3'
         ])) {
-            return response()->json('kelas tidak terdaftar', 401);
+            return response()->json([
+                'msg' => 'Kelas tidak terdaftar',
+                'statusCode' => 401
+            ], 401);
         }
 
         if($validator->fails()) {
@@ -124,7 +133,10 @@ class AuthController extends Controller
             ], 200);
         }
 
-        return response()->json('email atau password salah', 422);
+        return response()->json([
+            'msg' => 'Email atau password salah',
+            'statusCode' => 422
+        ], 422);
     }
 
     public function loginAdmin(Request $request) {
@@ -163,6 +175,9 @@ class AuthController extends Controller
             ], 200);
         }
 
-        return response()->json('email atau password salah', 422);
+        return response()->json([
+            'msg' => 'Eamil atau password salah',
+            'statusCode' => 422
+        ], 422);
     }
 }

@@ -61,7 +61,10 @@ class AdminController extends Controller
             ], 200);
         }
 
-        return response()->json('siswa tidak ditemukan', 404);
+        return response()->json([
+            'msg' => 'Siswa tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 
     public function add_candidate_by_id(Request $request, $id) {
@@ -81,7 +84,10 @@ class AdminController extends Controller
             $isCandidate = $student->where('status', $student->status == 'kandidat')->exists();
 
             if($isCandidate) {
-                return response()->json('siswa tersebut sudah berstatus kandidat', 401);
+                return response()->json([
+                    'msg' => 'Siswa tersebut sudah berstatus kandidat',
+                    'statusCode' => 401
+                ], 401);
             };
 
             $thumbnail = $request->file('picture');
@@ -111,7 +117,10 @@ class AdminController extends Controller
             ], 200);
         }
 
-        return response()->json('siswa tidak ditemukan', 404);
+        return response()->json([
+            'msg' => 'Siswa tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 
     public function show_candidate() {
@@ -162,7 +171,10 @@ class AdminController extends Controller
             ], 200);
         }
 
-        return response()->json('kandidat tidak ditemukan', 404);
+        return response()->json([
+            'msg' => 'Kandidat tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 
     public function update_candidate_by_id(Request $request, $id) {
@@ -199,7 +211,10 @@ class AdminController extends Controller
             ], 200);
         }
 
-        return response()->json("kandidat tidak ditemukan", 404);
+        return response()->json([
+            'msg' => 'Kandidat tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 
     public function delete_candidate_by_id($id) {
@@ -218,7 +233,10 @@ class AdminController extends Controller
             ], 200);
         }
 
-        return response()->json('kandidat tidak ditemukan', 404);
+        return response()->json([
+            'msg' => 'Kandidat tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 
     public function show_votes() {
@@ -270,7 +288,10 @@ class AdminController extends Controller
             ], 200);
         }
 
-        return response()->json('kandidat tidak ditemukan', 404);
+        return response()->json([
+            'msg' => 'Kandidat tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 
     public function add_student_data(Request $request) {
@@ -298,7 +319,10 @@ class AdminController extends Controller
         $studentData = $validator->validated();
         StudentData::create($studentData);
 
-        return response()->json('Berhasil ditambahkan', 200);
+        return response()->json([
+            'msg' => 'Berhasil ditambahkan',
+            'statusCode' => 200
+        ], 200);
     }
 
     public function show_student_data() {
@@ -341,7 +365,10 @@ class AdminController extends Controller
             ], 200);
         }
 
-        return response()->json('data siswa tidak ditemukan', 404);
+        return response()->json([
+            'msg' => 'Data siswa tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 
     public function update_student_data_by_id(Request $request, $id) {
@@ -358,11 +385,17 @@ class AdminController extends Controller
             $emailAlreadyExists = StudentData::where('email', $request->email)->exists();
 
             if($NisAlreadyExists) {
-                return response()->json('Nis sudah terdaftar', 400);
+                return response()->json([
+                    'msg' => 'Nis sudah terdaftar',
+                    'statusCode' => 400
+                ], 400);
             }
 
             if($emailAlreadyExists) {
-                return response()->json('Email sudah terdaftar', 400);
+                return response()->json([
+                    'msg' => 'Email sudah terdaftar',
+                    'statusCode' => 400
+                ], 400);
             }
 
             if ($validator->fails()) {
@@ -388,7 +421,10 @@ class AdminController extends Controller
             ], 200);
         }
 
-        return response()->json("data siswa tidak ditemukan", 404);
+        return response()->json([
+            'msg' => 'Data siswa tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 
     public function delete_student_data_by_id($id) {
@@ -404,6 +440,9 @@ class AdminController extends Controller
             ], 200);
         }       
 
-        return response()->json("data siswa tidak ditemukan", 404);
+        return response()->json([
+            'msg' => 'Data siswa tidak ditemukan', 
+            'statusCode' => 404
+        ], 404);
     }
 }

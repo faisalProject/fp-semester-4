@@ -58,7 +58,10 @@ class StudentController extends Controller
             ], 200);
         }
 
-        return response()->json('kandidat tidak ditemukan', 404);
+        return response()->json([
+            'msg' => 'Kandidat tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 
     public function vote_candidate_by_id(Request $request, $id) {
@@ -95,6 +98,9 @@ class StudentController extends Controller
     
         }
     
-        return response()->json('kandidat tidak ditemukan', 404);
+        return response()->json([
+            'msg' => 'Kandidat tidak ditemukan',
+            'statusCode' => 404
+        ], 404);
     }
 }
