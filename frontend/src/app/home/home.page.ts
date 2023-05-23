@@ -8,12 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  email ='';
-  password = '';
+  form: any ={}
   constructor(public alertController : AlertController, private router : Router ) {}
 
    async login(){
-    if (this.email === '' || this.password === '') {
+    if (this.form.email === '' || this.form.password === '') {
       const alert = await this.alertController.create({
         message: "harap isi form dengan benar!",
         buttons: ['OK']
@@ -23,8 +22,8 @@ export class HomePage {
   else{
      this.router.navigateByUrl('dashboard')
     }
-    this.email ='';
-    this.password='';
+    this.form.email ='';
+    this.form.password='';
 
   
   }

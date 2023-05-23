@@ -74,7 +74,36 @@ const routes: Routes = [
   {
     path: 'daftar-kandidat',
     loadChildren: () => import('./admin/daftar-kandidat/daftar-kandidat.module').then( m => m.DaftarKandidatPageModule)
+  },
+  {
+    path: 'detail-akun',
+    loadChildren: () => import('./admin/detail-akun/detail-akun.module').then( m => m.DetailAkunPageModule)
+  },
+  {
+    path: 'detail-data',
+    loadChildren: () => import('./admin/detail-data/detail-data.module').then( m => m.DetailDataPageModule)
+  },
+  {
+    path: 'detail-kandidat',
+    loadChildren: () => import('./admin/detail-kandidat/detail-kandidat.module').then( m => m.DetailKandidatPageModule)
+  },  {
+    path: 'daftar-siswa',
+    loadChildren: () => import('./admin/daftar-siswa/daftar-siswa.module').then( m => m.DaftarSiswaPageModule)
+  },
+  {
+    path: 'edit-data-siswa',
+    loadChildren: () => import('./admin/edit-data-siswa/edit-data-siswa.module').then( m => m.EditDataSiswaPageModule)
+  },
+  {
+    path: 'edit-data-kandidat',
+    loadChildren: () => import('./admin/edit-data-kandidat/edit-data-kandidat.module').then( m => m.EditDataKandidatPageModule)
+  },
+  {
+    path: 'data-suara',
+    loadChildren: () => import('./admin/data-suara/data-suara.module').then( m => m.DataSuaraPageModule)
   }
+
+
 ];
 
 @NgModule({

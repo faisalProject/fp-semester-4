@@ -1,6 +1,41 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+@font-face {
+  font-family: 'QuicksandLight';
+  src: url('../assets/font/Quicksand-Light.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'QuicksandReguler';
+  src: url('../assets/font/Quicksand-Regular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'QuicksandMedium';
+  src: url('../assets/font/Quicksand-Medium.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'QuicksandSemiBold';
+  src: url('../assets/font/Quicksand-SemiBold.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'QuickBold';
+  src: url('../assets/font/Quicksand-Bold.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
