@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+
 import { environment } from 'src/environments/environment';
+import { LocalStorageService } from '../service/local-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +11,14 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  
+  data:any
   form: any ={}
 
   constructor(
     public alertController : AlertController, 
     private router : Router,
-
+    private local:LocalStorageService,
+    private toast:ToastController
     ) {}
 
   async validate(message:any){
@@ -24,6 +27,7 @@ export class HomePage {
       buttons:['OK']
     });
     await alert.present();
+    
   }
 
   async login(){
@@ -50,9 +54,25 @@ export class HomePage {
         });
 
         const data = await res.json(); 
-        console.log(data);
+  
+       
+
+        this.toast.create({
+          message:'Berhasil!',
+          duration:2000
+        }).then(a=>{
+          this.local.set('token', data.token)
+          a.present()
+          this.router.navigateByUrl('dashboard')
+          }
+        )
       } catch (error) {
+        console.log(error);
         
+        this.alertController.create({
+          message:'Email atau Password salah!',
+          buttons:['OK']
+        }).then(a=> a.present())
       }
      
     }
@@ -60,7 +80,12 @@ export class HomePage {
     
   }
 
-  
+  ngOnInit(){
+    const token = this.local.get('token')
+    if (token) {
+      this.router.navigateByUrl('dashboard')
+    }
+  }
 
 
 async register(){
