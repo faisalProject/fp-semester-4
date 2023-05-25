@@ -1,0 +1,111 @@
+ion-header::after{
+    background-image: none;
+}
+
+*{
+    font-family: 'QuicksandReguler', sans-serif;
+}
+
+.ion-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    // border: 2px red solid;
+    padding: 20px !important;
+}
+
+.ion-content > .kepala{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px !important;
+    // padding: 0 !important;
+    // border: 2px solid blue;
+}
+
+.ion-content > .kepala > .add{
+    height: 45px;
+    width: 50px;
+    display: flex;
+    margin: 0 !important;
+    align-items: center;
+    justify-content: center;
+    --border-radius: 4px !important;
+    --box-shadow: none;
+}
+
+.ion-content > .kepala > p{
+    font-size: 18px;
+    font-weight: bold;
+    color: #3d3d3d;
+    letter-spacing: 1.5px;
+}
+
+.ion-content > .body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: min-content;
+    grid-auto-rows: min-content;
+    padding: 10px;
+    gap: 10px;
+    // border: 2px solid green;
+}
+
+.ion-content > .body > .card {
+    // border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.ion-content > .body > .card > img {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+}
+
+.ion-content > .body > .card > .description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 0 0 4px 4px;
+    padding: 10px;
+}
+
+.ion-content > .body > .card > .description > .top,
+.ion-content > .body > .card > .description > .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    // padding: 0 10px;
+}
+
+.ion-content > .body > .card > .description > .top > p,
+.ion-content > .body > .card > .description > .bottom > p {
+    font-size: 14px;
+    color: #3d3d3d;
+    // border: 1px solid #3d3d3d;
+    margin: 0 !important;
+}
+
+.ion-content > .body > .card > .description > .bottom > .action {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.ion-content > .body > .card > .description > .bottom > .action > .edit,
+.ion-content > .body > .card > .description > .bottom > .action > .delete {
+    flex: 1;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --border-radius: 4px !important;
+    --box-shadow: none;
+}
+
+

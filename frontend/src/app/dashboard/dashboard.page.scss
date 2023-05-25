@@ -1,0 +1,52 @@
+.jumbotron-contents {
+    width: 100%;
+    min-height: 200px;
+    // border: 1px solid #333;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.jumbotron-contents > img {
+    width: 100%;
+}
+
+.jumbotron-contents > .description{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.jumbotron-contents > .description > .btn-pilih{
+    max-width: 120px;
+    height: 35px;
+    border-radius: 4px;
+    background-color: #850404 !important;
+}
+.kandidatPicture{
+    width: 100%;
+}
+
+.card{
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: none;
+    border: 1px solid #ced4da;
+}
+.btn-more{
+    margin: 0 15px 15px 15px;
+}
+
+.title{
+    font-size: 18px;
+    margin-bottom: 0px;
+    color: #3d3d3d;
+}
+
+.card-description{
+    font-size: 14px;
+    color: #3d3d3d;
+    margin-bottom: 0px;
+}

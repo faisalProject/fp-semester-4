@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    
+    <div class="img-container">
+      <ion-img src="../../assets/logo/LOGO-TUT-WURI-HANDAYANI-1-1024x1024.png" alt="" style="width: 200px; height: 200px"></ion-img>
+    </div>
+   
+    <ion-input label="Email" fill="outline" labelPlacement="floating" [(ngModel)]="form.email"></ion-input>
+    <br>
+    <ion-input type="password" label="password" fill="outline" labelPlacement="floating" [(ngModel)]="form.password"></ion-input>
+    <br>
+    <ion-list>
+      <ion-item>
+        <ion-select aria-label="fruit" value="user">
+          <ion-select-option value="user">user</ion-select-option>
+          <ion-select-option value="admin">admin </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <br>
+    <ion-button expand="block" size="large" (click)="login()"><b>login</b></ion-button>  
+    <br>
+    <ion-button size="small" fill="clear" (click)="register()">belum punya akun?</ion-button>
+
+  </div>
+</ion-content>

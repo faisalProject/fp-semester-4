@@ -1,0 +1,93 @@
+ion-header::after{
+    background-image: none;
+}
+
+*{
+    font-family: 'QuicksandReguler', sans-serif;
+    color: #3d3d3d;
+}
+
+.ion-content > .kepala{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 0 10px !important;
+    // padding: 0 !important;
+    // border: 2px solid blue;
+}
+
+.ion-content > .kepala > p{
+    font-size: 18px;
+    font-weight: bold;
+    color: #3d3d3d;
+    letter-spacing: 1.5px;
+}
+
+.candidate-details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.candidate-details > .card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.candidate-details > .card > img {
+    width: 100%;
+
+}
+.candidate-details > .card > .description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.candidate-details > .card > .description > .line{
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.candidate-details > .card > .description > .line > p {
+    margin: 0;
+}
+
+.candidate-details > .card > .description > .line:not(:last-child){
+    border-bottom: 1px solid #ced4da;
+}
+
+.candidate-details > .card > .description > .line:last-child{
+    padding-bottom: 0;
+}
+
+.vision-mission {
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.vision-mission > .top,
+.vision-mission > .bottom {
+    padding: 0 10px;
+}
+
+.vision-mission > .top > p, 
+.vision-mission > .bottom > p:first-child {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
