@@ -12,7 +12,10 @@ import { LocalStorageService } from '../service/local-storage.service';
 })
 export class HomePage {
   data:any
-  form: any ={}
+  form: any ={
+    email:'',
+    password: ''
+  }
 
   constructor(
     public alertController : AlertController, 
@@ -51,11 +54,19 @@ export class HomePage {
             email: this.form.email,
             password: this.form.password
           })
-        });
+        })
 
         const data = await res.json(); 
   
-       
+       console.log(data);
+      
+       if(typeof data === 'string'){
+        this.alertController.create({
+          message: "Error!",
+          buttons: ['OK']
+        }).then(a=>a.present())
+        return;
+      }
 
         this.toast.create({
           message:'Berhasil!',
@@ -65,12 +76,12 @@ export class HomePage {
           a.present()
           this.router.navigateByUrl('dashboard')
           }
-        )
+        );
       } catch (error) {
         console.log(error);
         
         this.alertController.create({
-          message:'Email atau Password salah!',
+          message:"Email atau Password Salah!",
           buttons:['OK']
         }).then(a=> a.present())
       }
@@ -80,12 +91,12 @@ export class HomePage {
     
   }
 
-  ngOnInit(){
-    const token = this.local.get('token')
-    if (token) {
-      this.router.navigateByUrl('dashboard')
-    }
-  }
+  // ngOnInit(){
+  //   const token = this.local.get('token')
+  //   if (token !== undefined || token !== null || token !=='') {
+  //     this.router.navigateByUrl('dashboard')
+  //   }
+  // }
 
 
 async register(){

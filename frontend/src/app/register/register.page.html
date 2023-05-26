@@ -12,18 +12,28 @@
       <img src="../../assets/logo/LOGO-TUT-WURI-HANDAYANI-1-1024x1024.png " style="height: 200px; width: 200px;" >
     </div>
     
-    <ion-input label="NIS" type="text" labelPlacement="floating" fill="outline" size="small"></ion-input>
+    <ion-input label="NIS" type="text" labelPlacement="floating" fill="outline" size="small" [(ngModel)]="form.nis"></ion-input>
     <br>
-    <ion-input type="email" label="Email" labelPlacement="floating" fill="outline"></ion-input>
+    <ion-input type="email" label="Email" labelPlacement="floating" fill="outline" [(ngModel)]="form.email"></ion-input>
     <br>
-    <ion-input label="Kelas" labelPlacement="floating" fill="outline" ></ion-input>
+    <ion-list>
+      <ion-item>
+        <ion-select 
+        placeholder="Kelas"
+        (ionChange)="handleChange($event)"
+        >
+          <ion-select-option *ngFor="let kls of kelas" value="{{kls}}" >{{ kls }}</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+    </ion-list>
     <br>
-    <ion-input type="password" label="Password" labelPlacement="floating" fill="outline"></ion-input>
+    <ion-input type="password" label="Password" labelPlacement="floating" fill="outline" [(ngModel)]="form.password"></ion-input>
     <br>
-    <ion-input type="password"label="Confirmation Password" labelPlacement="floating" fill="outline"></ion-input>
+    <ion-input type="password"label="Confirmation Password" labelPlacement="floating" fill="outline" [(ngModel)]="form.conPass"></ion-input>
     <br>
 
-    <ion-button (click)="register" expand="block"  size="large"> Register </ion-button>
+    <ion-button (click)="register()" expand="block"  size="large"> Register </ion-button>
     <br>
     <label>Sudah Punya akun? <label (click)="login()" class="lgn-pg">Login</label> </label>
   </div>

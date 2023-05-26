@@ -34,7 +34,7 @@ export class AppPage {
   }
   ngOnInit() {
     const token = this.local.get('token')
-    if (!token) {
+    if (!token || token===undefined) {
       this.router.navigateByUrl('home')
     }
   }
