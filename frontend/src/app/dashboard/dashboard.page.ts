@@ -32,7 +32,7 @@ export class DashboardPage implements OnInit {
 
   open(ev:any){
     this.db.set('id', ev)
-    console.log(this.db.get('id'));
+    // console.log(this.db.get('id'));
     
     
     this.router.navigateByUrl('candidate-details')

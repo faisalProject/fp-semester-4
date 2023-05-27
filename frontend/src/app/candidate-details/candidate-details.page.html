@@ -2,16 +2,16 @@
 <ion-content [fullscreen]="true">
   <div class="detail-contents">
     <div class="profile-container">
-      <img src="../../assets/logo/person.jpg" alt="">
+      <img src={{isi.data.data.gambar}} alt="">
       <div class="description">
         <div class="list">
-          <p>Name: Lorem Ipsum</p>
+          <p>Name: {{isi.data.data.nama}}</p>
         </div>
         <div class="list">
-          <p>NIS: 123456</p>
+          <p>NIS: {{isi.data.data.nis}}</p>
         </div>
         <div class="list">
-          <p>Kelas: XI IPA 1</p>
+          <p>Kelas: {{isi.data.data.kelas}}</p>
         </div>
       </div>
     </div>
@@ -19,15 +19,17 @@
       <div class="vision">
         <h4>Visi</h4>
         <ol>
+          {{isi.data.data.visi}}
+
+          <!-- <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quis laborum explicabo voluptatem quod ea corporis modi necessitatibus natus aperiam.</li>
           <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quis laborum explicabo voluptatem quod ea corporis modi necessitatibus natus aperiam.</li>
           <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quis laborum explicabo voluptatem quod ea corporis modi necessitatibus natus aperiam.</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quis laborum explicabo voluptatem quod ea corporis modi necessitatibus natus aperiam.</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quis laborum explicabo voluptatem quod ea corporis modi necessitatibus natus aperiam.</li>
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quis laborum explicabo voluptatem quod ea corporis modi necessitatibus natus aperiam.</li> -->
         </ol>
       </div>
       <div class="mission">
         <h4>Misi</h4>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid a perspiciatis molestias, doloremque sunt possimus animi non eveniet cumque veritatis minima cupiditate ad, dignissimos tempore officia vel neque vero ex quae voluptatem sequi quibusdam? Officia ipsum cumque repellendus, illo, qui repellat laboriosam atque molestias quasi, vel unde ut facere ipsa blanditiis hic? Nisi amet rem officiis repellendus quae sit voluptatibus, ipsam minus placeat, perspiciatis nam quasi eum libero dolorum sapiente veritatis ipsa doloremque blanditiis quam fuga incidunt quibusdam corporis delectus facilis! Earum dignissimos officia quis dolor sunt voluptates velit a.</p>
+        <p>{{isi.data.data.misi}}</p>
         <ion-button (click)="pilih()">PILIH</ion-button>
       </div> 
     </div>

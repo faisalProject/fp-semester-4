@@ -10,11 +10,27 @@ import { StorageService } from '../localStorage';
   styleUrls: ['./candidate-details.page.scss'],
 })
 export class CandidateDetailsPage implements OnInit {
+
+  public isi = {
+    data:{
+      data:{
+        id_kandidat: '',
+        gambar: '',
+        nama: '',
+        nis: '',
+        kelas: '',
+        email: '',
+        visi: '',
+        misi: '',
+      }
+    }
+  }
+
   constructor(
     public router:Router, 
     private alertController: AlertController,
     private db: StorageService,
-    // private dash:DashboardPage
+ 
     ) { }
 
   pilih(){
@@ -38,9 +54,12 @@ export class CandidateDetailsPage implements OnInit {
         } 
       })
       
-       const data = await res.json();
-
-      console.log("HERE!"+ data.msg);
+        this.isi = await res.json();
+      console.log(this.db.get('id'));
+      // data.forEach((a: any) => {
+      //   console.log(a);
+      // });
+      console.log("HERE! "+ this.isi.data.data.id_kandidat);
     }catch(error){
       console.log(error);
       
