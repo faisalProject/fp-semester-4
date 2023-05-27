@@ -13,7 +13,7 @@ export class StorageService{
 
     get(key:string){
         const item = this.db.getItem(key)
-        return item ? JSON.parse(item) : null
+        return item ? item : null
     }
 
     set(key:string, value:any){

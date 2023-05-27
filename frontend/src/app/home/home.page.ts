@@ -60,7 +60,7 @@ export class HomePage {
   
        console.log(data);
       
-       if(typeof data === 'string'){
+       if( data === 'string'){
         this.alertController.create({
           message: "Error!",
           buttons: ['OK']
@@ -74,7 +74,7 @@ export class HomePage {
         }).then(a=>{
           this.local.set('token', data.token)
           a.present()
-          this.router.navigateByUrl('dashboard')
+          // this.router.navigateByUrl('dashboard')
           }
         );
       } catch (error) {

@@ -15,25 +15,28 @@
   </div>
 
   <!-- Card -->
-  <ion-card  class="card">
-    <img alt="Kandidat" src="../../assets/logo/person.jpg" class="kandidatPicture"/>
-    <ion-card-header>
-      <h4 class="title">Nama: Lorem ipsum dolor </h4>
-      <h4 class="title">NIS: 12345678</h4>
-    </ion-card-header>
-    <ion-card-content>
-    <p class="card-description">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dolor cumque quibusdam perspiciatis commodi. Omnis, eveniet. Velit in dolor ut?
-    </p>  
-    </ion-card-content>
-    <ion-button class="btn-more" (click)="open()">
-      Selengkapnya
-    </ion-button>
-  </ion-card>
+  <div *ngFor = "let dt of data.data.data">
+    <ion-card class="card"> 
+      <img alt="Kandidat" src={{dt.gambar}} class="kandidatPicture"/>
+      <ion-card-header>
+        <h4 class="title">Nama: {{dt.nama}} </h4>
+        <h4 class="title">NIS: {{dt.nis}}</h4>
+      </ion-card-header>
+      <ion-card-content>
+      <p class="card-description">
+        {{dt.misi}}
+      </p>  
+      </ion-card-content>
+      <ion-button class="btn-more" (click)="open(dt.id_kandidate)">
+        Selengkapnya
+      </ion-button>
+    </ion-card>
+
+  </div>
 
 
     <!-- Card -->
-    <ion-card  class="card">
+    <!-- <ion-card  class="card">
       <img alt="Kandidat" src="../../assets/logo/person.jpg" class="kandidatPicture"/>
       <ion-card-header>
         <h4 class="title">Nama: Lorem ipsum dolor </h4>
@@ -47,10 +50,10 @@
       <ion-button class="btn-more" (click)="open()">
         Selengkapnya
       </ion-button>
-    </ion-card>
+    </ion-card> -->
 
       <!-- Card -->
-  <ion-card  class="card">
+  <!-- <ion-card  class="card">
     <img alt="Kandidat" src="../../assets/logo/person.jpg" class="kandidatPicture"/>
     <ion-card-header>
       <h4 class="title">Nama: Lorem ipsum dolor </h4>
@@ -64,7 +67,7 @@
     <ion-button class="btn-more" (click)="open()">
       Selengkapnya
     </ion-button>
-  </ion-card>
+  </ion-card> -->
 
   <!-- Modal -->
   <!-- <ion-modal [isOpen]="detailKandidat">
