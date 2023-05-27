@@ -28,8 +28,8 @@ export class DashboardPage implements OnInit {
 
   open(ev:any){
     this.id = ev;
-    console.log(this.id);
-    // this.router.navigateByUrl('candidate-details')
+    
+    this.router.navigateByUrl('candidate-details')
   }
   async ngOnInit() {
     try {
