@@ -13,8 +13,8 @@ export class CandidateDetailsPage implements OnInit {
   constructor(
     public router:Router, 
     private alertController: AlertController,
-    private dash:DashboardPage,
-    private db: StorageService
+    private db: StorageService,
+    // private dash:DashboardPage
     ) { }
 
   pilih(){
@@ -28,16 +28,24 @@ export class CandidateDetailsPage implements OnInit {
     }).then(alert => alert.present())
   }
   async ngOnInit() {
-    const res = await fetch(environment.urlApi + `localhost:8000/api/student/show-candidate/${this.dash.id}`, {
-      method:'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.db.get('token')}`
-      } 
-    })
-    
-    const data = await res.json();
-    console.log(data);
+
+    try{
+      const res = await fetch(environment.urlApi + `api/student/show-candidate/${this.db.get('id')}`, {
+        method:'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.db.get('token')}`
+        } 
+      })
+      
+       const data = await res.json();
+
+      console.log("HERE!"+ data.msg);
+    }catch(error){
+      console.log(error);
+      
+    }
+
     
   }
 

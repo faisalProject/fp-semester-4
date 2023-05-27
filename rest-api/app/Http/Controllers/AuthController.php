@@ -128,6 +128,7 @@ class AuthController extends Controller
                     'msg' => 'berhasil login',
                     'name' => $student->student_data->name,
                     'email' => Auth::guard('student')->user()->email,
+                    'statusCode' => 200
                 ],
                 "token" => "{$token}"
             ], 200);

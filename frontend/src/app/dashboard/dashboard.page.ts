@@ -24,10 +24,16 @@ export class DashboardPage implements OnInit {
     }
   }
   
-  constructor(public router:Router, private db:StorageService) { }
+  constructor(
+    public router:Router, 
+    private db:StorageService
+  ) { }
+
 
   open(ev:any){
-    this.id = ev;
+    this.db.set('id', ev)
+    console.log(this.db.get('id'));
+    
     
     this.router.navigateByUrl('candidate-details')
   }
@@ -43,7 +49,7 @@ export class DashboardPage implements OnInit {
 
       this.data = await res.json();
  
-      console.log(this.data.data.data);
+      // console.log(this.data.data.data);
       
     } catch (error:any) {
       console.log(error);

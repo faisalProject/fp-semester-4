@@ -60,9 +60,9 @@ export class HomePage {
   
        console.log(data);
       
-       if( data === 'string'){
+       if( data.data.statusCode !== 200){
         this.alertController.create({
-          message: "Error!",
+          message: data.data.statusCode,
           buttons: ['OK']
         }).then(a=>a.present())
         return;
@@ -70,7 +70,7 @@ export class HomePage {
 
         this.toast.create({
           message:'Berhasil!',
-          duration:2000
+          duration:1000
         }).then(a=>{
           this.local.set('token', data.token)
           a.present()
