@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController, NavController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { DashboardPage } from '../dashboard/dashboard.page';
 import { StorageService } from '../localStorage';
@@ -10,6 +10,7 @@ import { StorageService } from '../localStorage';
   styleUrls: ['./candidate-details.page.scss'],
 })
 export class CandidateDetailsPage implements OnInit {
+
 
   public isi = {
     data:{
@@ -26,10 +27,13 @@ export class CandidateDetailsPage implements OnInit {
     }
   }
 
+  id:any;
   constructor(
     public router:Router, 
     private alertController: AlertController,
     private db: StorageService,
+    private navCtrl: NavController,
+    private route: ActivatedRoute
  
     ) { }
 
@@ -43,8 +47,8 @@ export class CandidateDetailsPage implements OnInit {
       }]
     }).then(alert => alert.present())
   }
-  async ngOnInit() {
 
+  async candidat(){
     try{
       const res = await fetch(environment.urlApi + `api/student/show-candidate/${this.db.get('id')}`, {
         method:'GET',
@@ -64,8 +68,31 @@ export class CandidateDetailsPage implements OnInit {
       console.log(error);
       
     }
-
-    
   }
+
+ 
+  ngOnInit() {
+    this.id =this.route.snapshot.paramMap.get('id')
+    console.log('variabel' + this.id);
+    
+    this.candidat();
+    this.navCtrl.pop
+  }
+
+  // ngAfterViewChecked(){
+
+  // }
+  // ngOnDestroy(){
+  //   this.isi.data.data.email = '';
+  //   this.isi.data.data.gambar = '';
+  //   this.isi.data.data.id_kandidat = '';
+  //   this.isi.data.data.kelas = '';
+  //   this.isi.data.data.misi = '';
+  //   this.isi.data.data.nama = '';
+  //   this.isi.data.data.nis = '';
+  //   this.isi.data.data.visi = '';
+  //   console.log('ngOnDestroy trigger');
+    
+  
 
 }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { StorageService } from '../localStorage';
+import { NavController } from '@ionic/angular';
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -26,7 +29,9 @@ export class DashboardPage implements OnInit {
   
   constructor(
     public router:Router, 
-    private db:StorageService
+    private db:StorageService,
+    private navCtrl: NavController
+
   ) { }
 
 
@@ -34,8 +39,7 @@ export class DashboardPage implements OnInit {
     this.db.set('id', ev)
     // console.log(this.db.get('id'));
     
-    
-    this.router.navigateByUrl('candidate-details')
+    this.navCtrl.navigateForward(`candidate-details/${this.db.get('id')}`)
   }
   async ngOnInit() {
     try {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { DashboardPage } from '../dashboard/dashboard.page';
 import { LocalStorageService } from '../service/local-storage.service';
 
@@ -11,7 +11,7 @@ import { LocalStorageService } from '../service/local-storage.service';
 })
 export class AppPage {
 
-  constructor(private router:Router, private alertController: AlertController, private local:LocalStorageService) { }
+  constructor(private router:Router, private alertController: AlertController, private local:LocalStorageService, private navCtrl: NavController) { }
 
   logout(){
    const alert = this.alertController.create({
@@ -37,6 +37,11 @@ export class AppPage {
     if (!token || token===undefined) {
       this.router.navigateByUrl('home')
     }
+  }
+  dashboard(){
+    this.navCtrl.navigateRoot('dashboard').then (() => {
+      this.navCtrl.pop()
+    })
   }
 
 }

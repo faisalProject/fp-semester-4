@@ -67,7 +67,7 @@ export class HomePage {
         }).then(a=>a.present())
         return;
       }
-
+        this.local.remove('token')
         this.toast.create({
           message:'Berhasil!',
           duration:1000

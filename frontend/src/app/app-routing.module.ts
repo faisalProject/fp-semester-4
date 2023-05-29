@@ -4,10 +4,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AppPage } from './app/app.page';
 import { TabsPage } from './admin/tabs/tabs.page';
+import { LocalStorageService } from '../app/service/local-storage.service';
 
-
-
-
+ 
+db:LocalStorageService;
 const routes: Routes = [
   {
     path: 'home',
@@ -39,7 +39,7 @@ const routes: Routes = [
         loadChildren:() => import('../app/candidate/candidate.module').then(m => m.CandidatePageModule)
       },
       {
-        path: 'candidate-details',
+        path: `candidate-details/:id` ,
         loadChildren:() => import('../app/candidate-details/candidate-details.module').then(m => m.CandidateDetailsPageModule)
       }
     ]
