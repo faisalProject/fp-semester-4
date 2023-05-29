@@ -50,7 +50,7 @@ export class CandidateDetailsPage implements OnInit {
 
   async candidat(){
     try{
-      const res = await fetch(environment.urlApi + `api/student/show-candidate/${this.db.get('id')}`, {
+      const res = await fetch(environment.urlApi + `api/student/show-candidate/${this.id}`, {
         method:'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -60,10 +60,8 @@ export class CandidateDetailsPage implements OnInit {
       
         this.isi = await res.json();
       console.log(this.db.get('id'));
-      // data.forEach((a: any) => {
-      //   console.log(a);
-      // });
-      console.log("HERE! "+ this.isi.data.data.id_kandidat);
+
+      console.log("HERE! "+ this.id);
     }catch(error){
       console.log(error);
       

@@ -27,15 +27,15 @@ export class CandidatePage implements OnInit {
 
   constructor(public router:Router, private db:StorageService) { }
 
-  open(){
-    // this.id = ev;
+  open(env:any){
+    this.db.set('id', env)
     
-    this.router.navigateByUrl('candidate-details')
+    this.router.navigateByUrl(`candidate-details/${this.db.get('id')}`)
   }
 
   async ngOnInit() {
     try {
-      const res = await fetch(environment.urlApi + "api/student/show-candidate", {
+      const res = await fetch(environment.urlApi + `api/student/show-candidate`, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',

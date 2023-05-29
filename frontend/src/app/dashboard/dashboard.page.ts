@@ -36,10 +36,9 @@ export class DashboardPage implements OnInit {
 
 
   open(ev:any){
-    this.db.set('id', ev)
     // console.log(this.db.get('id'));
     
-    this.navCtrl.navigateForward(`candidate-details/${this.db.get('id')}`)
+    this.navCtrl.navigateForward(`candidate-details/${ev}`)
   }
   async ngOnInit() {
     try {
