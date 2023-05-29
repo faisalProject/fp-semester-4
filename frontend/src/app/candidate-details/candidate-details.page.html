@@ -30,7 +30,8 @@
       <div class="mission">
         <h4>Misi</h4>
         <p>{{isi.data.data.misi}}</p>
-        <ion-button (click)="pilih()">PILIH</ion-button>
+        <ion-button (click)="pilih()" *ngIf="!isVoted">PILIH</ion-button>
+        <ion-button *ngIf="isVoted" disabled>Sudah Memilih</ion-button>
       </div> 
     </div>
   </div>

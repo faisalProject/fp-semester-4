@@ -23,6 +23,7 @@ class StudentMiddleware
             $decoded = JWT::decode($jwt, new Key(env('JWT_SECRET_KEY'), 'HS256'));
 
             if ($decoded->email !== 'admin@admin.com') {
+                $request['user_id'] = $decoded->id_student;
                 return $next($request);
             } else {
                 return response()->json("Unauthorized", 401);

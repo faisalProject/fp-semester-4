@@ -35,13 +35,15 @@ class StudentController extends Controller
         ], 200);
     }
 
-    public function show_candidate_by_id($id) {
+    public function show_candidate_by_id(Request $request, $id) {
         $candidate = Candidate::with('student')->find($id);
+        $vote = Voting::where('id_student', $request['user_id'])->first();
 
         if($candidate !== NULL) {
             return response()->json([
                 "data" => [
                     'msg' => 'detail kandidat',
+                    'already_vote'=> $vote ? true : false,
                     'data' => [
                         'id_kandidat' => $candidate->id_candidate,
                         'gambar' => url($candidate->picture),
