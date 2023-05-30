@@ -11,6 +11,7 @@ import { LocalStorageService } from '../service/local-storage.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  role:any;
   data:any
   form: any ={
     email:'',
@@ -35,6 +36,7 @@ export class HomePage {
 
   async login(){
 
+    console.log("ini ROLE: "+ this.role);
     
     if (this.form.email == null || this.form.name == '') {
       this.validate('Harap isi Email!')
@@ -42,8 +44,11 @@ export class HomePage {
     }else if (this.form.password == null || this.form.password == ''){
       this.validate('Harap isi Password!')
       return;
+    }else if(!this.role){
+      this.validate("Harap isi Role!")
+      return;
     }
-    else{
+    else if(this.role === "user"){
       try {
         const res = await fetch(environment.urlApi + 'api/login',{
           method: 'POST',
@@ -86,6 +91,46 @@ export class HomePage {
         }).then(a=> a.present())
       }
      
+    }else{
+      try {
+        const res = await fetch(environment.urlApi + "api/admin/login",{
+          method:"POST",
+          headers:{
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify({
+            email: this.form.email,
+            password: this.form.password
+          })
+        })
+
+        const data = await res.json()
+        console.log(data);
+        
+        if (data.data.statusCode !== 200) {
+          this.alertController.create({
+            message: data,
+            buttons: ["OK"]
+          }).then(a=>{
+            console.log(data);
+            
+            a.present()
+          })
+          return;
+        }
+        this.toast.create({
+          message: "Berhasil Login!",
+          duration:1000
+        }).then(a => {
+          this.local.remove('token')
+          this.local.set('token', data.token)
+          a.present()
+          this.router.navigateByUrl('daftar-akun')
+        })
+      } catch (error) {
+        console.log(error);
+        
+      }
     }
       
     

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-tambah-data-siswa',
   templateUrl: './tambah-data-siswa.page.html',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TambahDataSiswaPage implements OnInit {
 
+  form = {
+    nis:'',
+    name: '',
+    email: ''
+  }
   constructor() { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    try {
+      const res = await fetch(environment.urlApi + '')
+    } catch (error) {
+      
+    }
   }
 
 }
