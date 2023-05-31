@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { environment } from 'src/environments/environment';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-daftar-siswa',
   templateUrl: './daftar-siswa.page.html',
@@ -12,7 +13,8 @@ export class DaftarSiswaPage implements OnInit {
   isi:any=[]
   constructor(
     private route: Router,
-    private db:LocalStorageService
+    private db:LocalStorageService,
+    private NavCtrl:NavController
   ) { }
 
   async ngOnInit() {
@@ -30,7 +32,20 @@ export class DaftarSiswaPage implements OnInit {
     
   }
 
-  delete(a:any){}
+  async delete(a:any){
+    const res = await fetch (environment.urlApi + `api/admin/delete-student-data/${a}`,{
+      method:"Delete",
+      headers:{
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.db.get('token')}`
+      }
+    })
+
+    const data = await res.json()
+    console.log();
+    
+
+  }
 
   studentDetails(id:any) {
     this.route.navigateByUrl(`detail-data/${id}`);
@@ -41,7 +56,8 @@ export class DaftarSiswaPage implements OnInit {
   }
 
   editStudent(id:any) {
-    this.route.navigateByUrl(`edit-data-siswa/${id}`)
-  }
-
+    this.NavCtrl.navigateForward(`edit-data-siswa/${id}`)
+    }
 }
+
+

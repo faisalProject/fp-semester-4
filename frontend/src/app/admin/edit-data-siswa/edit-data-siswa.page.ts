@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { AlertController, ToastController } from '@ionic/angular';
-
+import { DaftarSiswaPage } from '../daftar-siswa/daftar-siswa.page';
 @Component({
   selector: 'app-edit-data-siswa',
   templateUrl: './edit-data-siswa.page.html',
   styleUrls: ['./edit-data-siswa.page.scss'],
 })
 export class EditDataSiswaPage implements OnInit {
-
+  
   id:any;
   isi:any;
   constructor(
@@ -18,9 +19,10 @@ export class EditDataSiswaPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private toastController: ToastController,
-    private alert:AlertController
+    private alert:AlertController,
+    private navCtrl:NavController
   ) { }
-
+    
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')
     console.log(this.id);
@@ -87,11 +89,11 @@ export class EditDataSiswaPage implements OnInit {
     this.toastController.create({
       message:ini.msg,
       duration:1000
-    }).then(a=>{
-      this.router.navigateByUrl('daftar-siswa')
-      a.present()
-    
-    })
-    
+    }).then(a=>{ 
+      a.present();
+      this.navCtrl.navigateBack('/daftar-siswa', {skipLocationChange:true})
+      })
+    }
   }
-}
+  
+
