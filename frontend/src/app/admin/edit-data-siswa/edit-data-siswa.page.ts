@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-data-siswa',
@@ -17,7 +17,8 @@ export class EditDataSiswaPage implements OnInit {
     private db:LocalStorageService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private alert:AlertController
   ) { }
 
   async ngOnInit() {
@@ -45,30 +46,52 @@ export class EditDataSiswaPage implements OnInit {
   }
 
   doSubmit(){
+    // console.log(this.);
+    
     this.editStudent()
   }
 
-  editStudent(){
-    const data = {
-      "nis": this.isi.nis,
-      "nama": this.isi.nama,
-      "email": this.isi.email
-    }
-
-    fetch(environment.urlApi + `api/admin/update-student-data/${this.id}`,{
+  async editStudent(){
+    // const data = {
+    //   "nis": this.isi.nis,
+    //   "nama": this.isi.nama,
+    //   "email": this.isi.email
+    // }
+   
+    
+    const res = await fetch(environment.urlApi + `api/admin/update-student-data/${this.id}`,{
       method:"PUT",
-      body:JSON.stringify(data),
+      body:JSON.stringify({
+        nis:this.isi.nis,
+        name: this.isi.nama,
+        email: this.isi.email
+      }),
       headers:{
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.db.get('token')}`
       }
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
+    const ini = await res.json();
+    console.log(ini);
+    
+    if(ini.statusCode !== 200){
+      this.alert.create({
+        message: ini.msg,
+        buttons:['OK']
+      }).then(a=> {
+        a.present()
+  
+      })
+      return
+    }
+    this.toastController.create({
+      message:ini.msg,
+      duration:1000
+    }).then(a=>{
       this.router.navigateByUrl('daftar-siswa')
-    }, err => {
-      console.log(err);
+      a.present()
+    
     })
+    
   }
 }

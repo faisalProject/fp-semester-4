@@ -6,7 +6,7 @@
   <div class="body">
     <div class="form" *ngIf="isi">
       <ion-input [(ngModel)]="isi.nis" class="input" label="NIS" label-placement="floating" fill="outline" placeholder="NIS"></ion-input>
-      <ion-input [(ngModel)]="isi.name" class="input" label="Name" label-placement="floating" fill="outline" placeholder="Name"></ion-input>
+      <ion-input [(ngModel)]="isi.nama" class="input" label="Name" label-placement="floating" fill="outline" placeholder="Name"></ion-input>
       <ion-input [(ngModel)]="isi.email" class="input input-file" label="Email" label-placement="floating" fill="outline" placeholder="Email"></ion-input>
       <ion-button (click)="doSubmit()" color="warning" class="edit"><p>Edit</p></ion-button>
     </div>

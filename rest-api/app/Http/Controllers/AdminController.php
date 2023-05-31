@@ -415,9 +415,9 @@ class AdminController extends Controller
             ]);
 
             return response()->json([
-                "data" => [
-                    'msg' => 'data siswa berhasil diupdated'
-                ]
+                
+                    'msg' => 'data siswa berhasil diupdated',
+                    'statusCode' => 200
             ], 200);
         }
 
