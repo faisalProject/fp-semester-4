@@ -3,6 +3,13 @@
     color: #3d3d3d;
 }
 
+.ion-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .ion-content > .kepala{
     width: 100%;
     display: flex;
@@ -37,6 +44,6 @@
 }
 
 .ion-content > .body > .form > .edit > p {
-    font-weight: bold;
+    font-family: 'QuicksandSemiBold', sans-serif;
     color: #3d3d3d;
 }

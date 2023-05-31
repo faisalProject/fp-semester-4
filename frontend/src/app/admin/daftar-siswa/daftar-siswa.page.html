@@ -1,16 +1,20 @@
 <ion-content [fullscreen]="true" class="ion-content">
   <div class="kepala">
+    <ion-button class="add"(click)="tambahSiswa()">
+      <ion-icon size="large" name="add-outline" color="light"></ion-icon>
+    </ion-button>
+
     <p>DAFTAR SISWA</p>
   </div>
 
   <div class="body">
     <div class="row">
       <div class="left">
-        <p class="medium">Student Name</p>
+        <p class="medium" (click)="studentDetails()">Student Name</p>
         <p class="small">student@gmail.com</p>
       </div>
       <div class="right">
-        <ion-button color="warning" class="edit">
+        <ion-button color="warning" class="edit" (click)="editStudent()">
           <ion-icon name="create-outline"></ion-icon>
         </ion-button>
         <ion-button color="danger" class="delete">

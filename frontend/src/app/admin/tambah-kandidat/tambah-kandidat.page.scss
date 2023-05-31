@@ -1,37 +1,47 @@
-.container {
-    // text-align: center;
-  
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    padding: 20px;
-    transform: translateY(-50%);
-  }
-  .container > .img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  .btn {
-    height: 35px;
-  }
-  
-  .container strong {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  
-  .container p {
-    font-size: 16px;
-    line-height: 22px;
-  
-    color: #8c8c8c;
-  
-    margin: 0;
-  }
-  
-  .container a {
-    text-decoration: none;
-  }
+*{
+  font-family: 'QuicksandReguler', sans-serif;
+  color: #3d3d3d;
+}
+
+.ion-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ion-content > .kepala{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 0 10px !important;
+  // border: 1px solid #333;
+  margin-bottom: 10px;
+}
+
+.ion-content > .kepala > p{
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.ion-content > .container {
+  padding: 0 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ion-content > .container > .input {
+  --border-radius: 4px !important;
+}
+
+.ion-content > .container > .input-file {
+  border: 1px solid #ced4da;
+}
+
+.ion-content > .container > .add-candidate {
+  --border-radius: 4px !important;
+  --box-shadow: none;
+  font-family: 'QuicksandSemiBold', sans-serif;
+}

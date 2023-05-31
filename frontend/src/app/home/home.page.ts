@@ -109,7 +109,7 @@ export class HomePage {
         
         if (data.data.statusCode !== 200) {
           this.alertController.create({
-            message: data,
+            message: 'Email atau Password Salah',
             buttons: ["OK"]
           }).then(a=>{
             console.log(data);
