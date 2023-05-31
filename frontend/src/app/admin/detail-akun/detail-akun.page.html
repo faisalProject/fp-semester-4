@@ -8,22 +8,22 @@
   <div class="kepala">
     <p>DETAIL AKUN SISWA</p>
   </div>
-  <div class="account-details">
+  <div class="account-details" *ngIf="isi" >
 
     <ion-label>
-      Name: Student Name
+      Name: {{isi.nama}}
     </ion-label>
     <ion-label>
-      NIS : 12345678
+      NIS : {{isi.nis}}
     </ion-label>
     <ion-label>
-      Email: student@student.com
+      Email: {{isi.email}}
     </ion-label>
     <ion-label>
-      Kelas: XII IPA 1
+      Kelas: {{isi.kelas}}
     </ion-label>
     <ion-label>
-      Status: siswa
+      Status: {{isi.status}}
     </ion-label>
 
   </div>

@@ -77,7 +77,7 @@ const routes: Routes = [
         loadChildren: () => import('./admin/daftar-kandidat/daftar-kandidat.module').then( m => m.DaftarKandidatPageModule)
       },
       {
-        path: 'detail-akun',
+        path: 'detail-akun/:id',
         loadChildren: () => import('./admin/detail-akun/detail-akun.module').then( m => m.DetailAkunPageModule)
       },
       {
