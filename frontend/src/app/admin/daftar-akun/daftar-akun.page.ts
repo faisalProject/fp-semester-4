@@ -38,8 +38,8 @@ export class DaftarAkunPage implements OnInit {
   
 }
 
-accountDetails() {
-  this.route.navigateByUrl('detail-akun')
+accountDetails(id:any) {
+  this.route.navigateByUrl(`detail-akun/${id}`)
 }
 
 }

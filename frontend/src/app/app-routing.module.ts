@@ -69,7 +69,7 @@ const routes: Routes = [
         loadChildren: () => import('./admin/daftar-siswa/daftar-siswa.module').then( m => m.DaftarSiswaPageModule)
       },
       {
-        path: 'detail-data',
+        path: 'detail-data/:id',
         loadChildren: () => import('./admin/detail-data/detail-data.module').then( m => m.DetailDataPageModule)
       },
       {
@@ -85,7 +85,7 @@ const routes: Routes = [
         loadChildren: () => import('./admin/edit-data-kandidat/edit-data-kandidat.module').then( m => m.EditDataKandidatPageModule)
       },
       {
-        path: 'edit-data-siswa',
+        path: 'edit-data-siswa/:id',
         loadChildren: () => import('./admin/edit-data-siswa/edit-data-siswa.module').then( m => m.EditDataSiswaPageModule)
       }
     ]

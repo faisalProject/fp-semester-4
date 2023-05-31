@@ -6,13 +6,15 @@
 
 <ion-content [fullscreen]="true" class="ion-content">
   <div class="kepala">
-    <p>DAFTAR AKUN SISWA</p>
+    <p>DETAIL DATA SISWA</p>
   </div>
-  <div class="student-details">
-    <ion-label>Name : student name</ion-label>
+  <div class="student-details"  *ngIf="isi">
+    <ion-label>Name : {{ isi.name }}</ion-label>
     
-    <ion-label>NIS: 12345678</ion-label>
+    <ion-label>NIS: {{ isi.nis }}</ion-label>
 
-    <ion-label>Email: student@student.com</ion-label>
+    <ion-label>Email: {{ isi.email }}</ion-label>
+    <ion-label>Created At: {{ isi.created_at }}</ion-label>
+    <ion-label>Updated At: {{ isi.updated_at }}</ion-label>
   </div>
 </ion-content>

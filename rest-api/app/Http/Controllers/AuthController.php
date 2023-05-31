@@ -171,13 +171,14 @@ class AuthController extends Controller
                     'msg' => 'berhasil login',
                     'name' =>  Auth::guard('admin')->user()->name,
                     'email' => Auth::guard('admin')->user()->email,
+                    'statusCode' => 200
                 ],
                 "token" => "{$token}"
             ], 200);
         }
 
         return response()->json([
-            'msg' => 'Eamil atau password salah',
+            'msg' => 'Email atau password salah',
             'statusCode' => 422
         ], 422);
     }

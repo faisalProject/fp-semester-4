@@ -1,12 +1,12 @@
 <ion-content [fullscreen]="true" class="ion-content">
   <div class="kepala">
 
-    <p>DAFTAR KANDIDAT</p>
+    <p>DAFTAR AKUN SISWA</p>
   </div>
 
   <div class="body">
     <div class="row" *ngFor = "let isi of isi">
-      <p (click)="accountDetails()" class="medium">{{isi.nama}}</p>
+      <p (click)="accountDetails(isi.id)" class="medium">{{isi.nama}}</p>
       <p class="small"> {{isi.email}}</p>
     </div>
     <!-- <div class="row">

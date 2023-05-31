@@ -8,97 +8,14 @@
   </div>
 
   <div class="body">
-    <div class="row">
+   
+    <div class="row"  *ngFor = "let isi of isi">
       <div class="left">
-        <p class="medium" (click)="studentDetails()">Student Name</p>
-        <p class="small">student@gmail.com</p>
+        <p class="medium" (click)="studentDetails(isi.id)">{{ isi.name }}</p>
+        <p class="small">{{ isi.nis }}</p>
       </div>
       <div class="right">
-        <ion-button color="warning" class="edit" (click)="editStudent()">
-          <ion-icon name="create-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" class="delete">
-          <ion-icon color="light" name="trash-outline"></ion-icon>
-        </ion-button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="left">
-        <p class="medium">Student Name</p>
-        <p class="small">student@gmail.com</p>
-      </div>
-      <div class="right">
-        <ion-button color="warning" class="edit">
-          <ion-icon name="create-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" class="delete">
-          <ion-icon color="light" name="trash-outline"></ion-icon>
-        </ion-button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="left">
-        <p class="medium">Student Name</p>
-        <p class="small">student@gmail.com</p>
-      </div>
-      <div class="right">
-        <ion-button color="warning" class="edit">
-          <ion-icon name="create-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" class="delete">
-          <ion-icon color="light" name="trash-outline"></ion-icon>
-        </ion-button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="left">
-        <p class="medium">Student Name</p>
-        <p class="small">student@gmail.com</p>
-      </div>
-      <div class="right">
-        <ion-button color="warning" class="edit">
-          <ion-icon name="create-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" class="delete">
-          <ion-icon color="light" name="trash-outline"></ion-icon>
-        </ion-button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="left">
-        <p class="medium">Student Name</p>
-        <p class="small">student@gmail.com</p>
-      </div>
-      <div class="right">
-        <ion-button color="warning" class="edit">
-          <ion-icon name="create-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" class="delete">
-          <ion-icon color="light" name="trash-outline"></ion-icon>
-        </ion-button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="left">
-        <p class="medium">Student Name</p>
-        <p class="small">student@gmail.com</p>
-      </div>
-      <div class="right">
-        <ion-button color="warning" class="edit">
-          <ion-icon name="create-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" class="delete">
-          <ion-icon color="light" name="trash-outline"></ion-icon>
-        </ion-button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="left">
-        <p class="medium">Student Name</p>
-        <p class="small">student@gmail.com</p>
-      </div>
-      <div class="right">
-        <ion-button color="warning" class="edit">
+        <ion-button color="warning" class="edit" (click)="editStudent(isi.id)">
           <ion-icon name="create-outline"></ion-icon>
         </ion-button>
         <ion-button color="danger" class="delete">
