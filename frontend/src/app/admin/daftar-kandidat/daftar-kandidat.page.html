@@ -10,16 +10,16 @@
 
   <div class="body">
     
-    <div class="card">
-      <img src="../../../assets/logo/person.jpg" alt="">
+    <div class="card" *ngFor="let isi of isi" >
+      <img src="{{ isi.gambar }}" alt="">
       <div class="description">
         <div class="top">
-          <p>Nama : Jim Jong Un</p>
-          <p>NIS : 21416255201122</p>
-          <p>Kelas : XII IPA 2</p>
+          <p>Nama : {{ isi.nama }} </p>
+          <p>NIS : {{ isi.nis }} </p>
+          <p>Kelas : {{ isi.kelas }} </p>
         </div>
         <div class="bottom">
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
+          <p> {{ isi.visi }} </p>
           <div class="action">
             <ion-button color="warning" class="edit" (click)="editCandidate()">
               <ion-icon name="create-outline"></ion-icon>
