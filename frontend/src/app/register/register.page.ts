@@ -22,8 +22,8 @@ export class RegisterPage implements OnInit {
     
   }
   public kelas:any =[
-    'XII IPA 1', 'XII IPA 2', 'XI IPA 1', 'XI IPA 2', 'X IPA 1', 'X IPA 2',
-    'XII IPS 1', 'XII IPS 2', 'XI IPS 1', 'XI IPS 2', 'X IPA 1', 'X IPA 2' 
+    'XII IPA 1', 'XII IPA 2', 'XII IPA 3', 'XI IPA 1', 'XI IPA 2', 'XI IPA 3', 'X IPA 1', 'X IPA 2', 'X IPA 3',
+    'XII IPS 1', 'XII IPS 2', 'XII IPS 3', 'XI IPS 1', 'XI IPS 2', 'XI IPS 3', 'X IPA 1', 'X IPA 2', 'X IPA 3', 
   ];
 
   constructor(

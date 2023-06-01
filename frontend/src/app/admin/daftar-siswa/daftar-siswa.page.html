@@ -15,6 +15,9 @@
         <p class="small">{{ isi.nis }}</p>
       </div>
       <div class="right">
+        <ion-button color="primary" class="add" (click)="addCandidate(isi.id)">
+          <ion-icon name="person-add" color="light"></ion-icon>
+        </ion-button>
         <ion-button color="warning" class="edit" (click)="editStudent(isi.id)">
           <ion-icon name="create-outline"></ion-icon>
         </ion-button>

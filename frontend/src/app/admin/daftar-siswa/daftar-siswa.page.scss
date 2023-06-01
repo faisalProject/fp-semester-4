@@ -73,7 +73,8 @@
 }
 
 .ion-content > .body > .row > .right > .edit,
-.ion-content > .body > .row > .right > .delete {
+.ion-content > .body > .row > .right > .delete,
+.ion-content > .body > .row > .right > .add {
     height: 35px;
     width: 40px;
     display: flex;
@@ -84,7 +85,8 @@
     --box-shadow: none;
 }
 
-.ion-content > .body > .row > .right > .delete {
+.ion-content > .body > .row > .right > .delete,
+.ion-content > .body > .row > .right > .add {
     --color: white;
 }
 

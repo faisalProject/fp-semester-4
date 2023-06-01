@@ -1,10 +1,6 @@
 <ion-content class="ion-content">
 
   <div class="kepala">
-    <ion-button class="add" (click)="tambahKandidat()">
-      <ion-icon size="large" name="add-outline"></ion-icon>
-    </ion-button>
-
     <p>DAFTAR KANDIDAT</p>
   </div>
 
@@ -24,7 +20,7 @@
             <ion-button color="warning" class="edit" (click)="editCandidate()">
               <ion-icon name="create-outline"></ion-icon>
             </ion-button>
-            <ion-button color="danger" class="delete">
+            <ion-button color="danger" (click)="hapus(isi.id_kandidate)" class="delete">
               <ion-icon name="trash-outline"></ion-icon>
             </ion-button>
           </div>

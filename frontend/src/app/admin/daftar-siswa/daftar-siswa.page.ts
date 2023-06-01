@@ -4,6 +4,7 @@ import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { environment } from 'src/environments/environment';
 import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-daftar-siswa',
   templateUrl: './daftar-siswa.page.html',
@@ -16,8 +17,13 @@ export class DaftarSiswaPage implements OnInit {
     private route: Router,
     private db:LocalStorageService,
     private NavCtrl:NavController,
-    private alert:AlertController
-  ) { }
+    private alert:AlertController,
+    private active:ActivatedRoute
+  ) {
+    active.params.subscribe((a)=>{
+      this.ngOnInit()
+    })
+   }
 
   async ngOnInit() {
    this.getData()
@@ -39,14 +45,15 @@ export class DaftarSiswaPage implements OnInit {
     
   }
 
-   delete(a:any){
+  // fungsi untuk menjalankan hapus data
+  delete(a:any){
     this.alert.create({
       message: "Apakah anda yakin ingin menghapus data ini ?",
       buttons:[{
         text:"OK",
         role:"OK",
         handler:()=>{
-          this.hapus(a)
+          this.hapus(a) // menghapus data
           this.ngOnInit()
         }
       },{
@@ -56,9 +63,11 @@ export class DaftarSiswaPage implements OnInit {
     ]
     }).then((a)=>{a.present()})
   }
+
+  // fungsi untuk menghapus data
   async hapus(a:any){
     const res = await fetch (environment.urlApi + `api/admin/delete-student-data/${a}`,{
-      method:"Delete",
+      method:"DELETE",
       headers:{
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.db.get('token')}`
@@ -67,7 +76,6 @@ export class DaftarSiswaPage implements OnInit {
 
     const data = await res.json()
     console.log(data);
-    
   }
 
   studentDetails(id:any) {
@@ -80,7 +88,11 @@ export class DaftarSiswaPage implements OnInit {
 
   editStudent(id:any) {
     this.NavCtrl.navigateForward(`edit-data-siswa/${id}`)
-    }
+  }
+
+  addCandidate(id:any){
+    this.NavCtrl.navigateForward(`tambah-kandidat/${id}`)
+  }
 }
 
 

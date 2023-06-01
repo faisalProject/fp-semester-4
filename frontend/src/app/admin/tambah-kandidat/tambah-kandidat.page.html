@@ -3,10 +3,23 @@
     <p>TAMBAH DATA KANDIDAT</p>
   </div>
 
-  <div class="container">
-    <ion-input label="Visi" labelPlacement="floating" fill="outline"></ion-input>
-    <ion-input label="Misi" labelPlacement="floating" fill="outline"></ion-input>
+  <div class="container" *ngIf="isi">
+    <ion-input label="Nama" [(ngModel)]="isi.name" [disabled]="true" labelPlacement="floating" fill="outline"></ion-input>
+    <ion-input label="NIS" [(ngModel)]="isi.nis" [disabled]="true" labelPlacement="floating" fill="outline"></ion-input>
+    <ion-list>
+      <ion-item>
+        <ion-select 
+        placeholder="Kelas"
+        (ionChange)="handleChange($event)"
+        >
+          <ion-select-option  *ngFor="let kls of kelas" value="{{kls}}"  >{{ kls }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-input [(ngModel)]="form.visi" label="Visi" labelPlacement="floating" fill="outline"></ion-input>
+    <ion-input [(ngModel)]="form.misi" label="Misi" labelPlacement="floating" fill="outline"></ion-input>
+    <!-- Masalah filenya disini!!! -->
     <ion-input type="file" class="file" fill="outline"></ion-input>
-    <ion-button expand="block" class="add-candidate" color="primary">Tambah</ion-button>
+    <ion-button expand="block" class="add-candidate" color="primary" (click)="tambah()">Tambah</ion-button>
   </div>
 </ion-content>

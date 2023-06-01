@@ -49,7 +49,7 @@ const routes: Routes = [
     component: TabsPage,
     children:[
       {
-        path: 'tambah-kandidat',
+        path: 'tambah-kandidat/:id',
         loadChildren: () => import('./admin/tambah-kandidat/tambah-kandidat.module').then( m => m.TambahKandidatPageModule)
       },
       {

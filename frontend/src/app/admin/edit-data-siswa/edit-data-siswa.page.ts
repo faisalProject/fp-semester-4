@@ -15,6 +15,7 @@ export class EditDataSiswaPage implements OnInit {
   
   id:any;
   isi:any;
+  
   constructor(
     private db:LocalStorageService,
     private route: ActivatedRoute,
@@ -50,14 +51,11 @@ export class EditDataSiswaPage implements OnInit {
   }
 
   doSubmit(){
-    // console.log(this.);
-    
     this.editStudent()
   }
 
+  // fungsi untuk menjalankan edit data
   async editStudent(){
-
-    
     const res = await fetch(environment.urlApi + `api/admin/update-student-data/${this.id}`,{
       method:"PUT",
       body:JSON.stringify({
@@ -70,6 +68,7 @@ export class EditDataSiswaPage implements OnInit {
         "Authorization": `Bearer ${this.db.get('token')}`
       }
     })
+
     const ini = await res.json();
     console.log(ini);
     
@@ -85,6 +84,7 @@ export class EditDataSiswaPage implements OnInit {
       })
       return
     }
+
     this.toastController.create({
       message:ini.msg,
       duration:1000

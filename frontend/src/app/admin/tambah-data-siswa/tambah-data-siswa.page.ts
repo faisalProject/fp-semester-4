@@ -51,10 +51,10 @@ export class TambahDataSiswaPage implements OnInit {
       this.toast.create({
         message:"Data Berhasil Ditambahkan",
         duration:2000
-    }).then((a)=>{
-      a.present()
-      this.route.navigate(['daftar-siswa'],{replaceUrl:true})
-    })
+      }).then((a)=>{
+        a.present()
+        this.route.navigate(['daftar-siswa'],{replaceUrl:true})
+      })
     } catch (error) {
       console.log(error);
       
