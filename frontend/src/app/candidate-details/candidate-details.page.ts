@@ -98,7 +98,7 @@ export class CandidateDetailsPage implements OnInit {
       
       if(message.statusCode !== 200){
         this.alertController.create({
-          message: message,
+          message: 'Gagal Memilih Kandidat!',
           buttons: ["OK"]
         }).then(a => a.present())
         return;
