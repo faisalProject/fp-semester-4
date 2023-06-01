@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { EditDataSiswaPageRoutingModule } from './edit-data-siswa-routing.module';
-
+import { DaftarSiswaPage } from '../daftar-siswa/daftar-siswa.page';
 import { EditDataSiswaPage } from './edit-data-siswa.page';
 
 @NgModule({
@@ -15,6 +15,7 @@ import { EditDataSiswaPage } from './edit-data-siswa.page';
     IonicModule,
     EditDataSiswaPageRoutingModule
   ],
-  declarations: [EditDataSiswaPage]
+  declarations: [EditDataSiswaPage],
+  providers:[DaftarSiswaPage]
 })
 export class EditDataSiswaPageModule {}

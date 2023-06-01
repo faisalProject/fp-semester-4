@@ -1,10 +1,11 @@
+import { DaftarSiswaPage } from './../daftar-siswa/daftar-siswa.page';
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { AlertController, ToastController } from '@ionic/angular';
-import { DaftarSiswaPage } from '../daftar-siswa/daftar-siswa.page';
+// import { DaftarSiswaPage } from '../daftar-siswa/daftar-siswa.page';
 @Component({
   selector: 'app-edit-data-siswa',
   templateUrl: './edit-data-siswa.page.html',
@@ -20,7 +21,8 @@ export class EditDataSiswaPage implements OnInit {
     private router: Router,
     private toastController: ToastController,
     private alert:AlertController,
-    private navCtrl:NavController
+    private navCtrl:NavController,
+    private daftar:DaftarSiswaPage
   ) { }
     
   async ngOnInit() {
@@ -54,12 +56,7 @@ export class EditDataSiswaPage implements OnInit {
   }
 
   async editStudent(){
-    // const data = {
-    //   "nis": this.isi.nis,
-    //   "nama": this.isi.nama,
-    //   "email": this.isi.email
-    // }
-   
+
     
     const res = await fetch(environment.urlApi + `api/admin/update-student-data/${this.id}`,{
       method:"PUT",
@@ -80,7 +77,9 @@ export class EditDataSiswaPage implements OnInit {
       this.alert.create({
         message: ini.msg,
         buttons:['OK']
+       
       }).then(a=> {
+        
         a.present()
   
       })
@@ -91,7 +90,11 @@ export class EditDataSiswaPage implements OnInit {
       duration:1000
     }).then(a=>{ 
       a.present();
-      this.navCtrl.navigateBack('/daftar-siswa', {skipLocationChange:true})
+      
+      this.router.navigate(['daftar-siswa']).then(()=>{
+        this.ngOnInit()
+      })
+     
       })
     }
   }

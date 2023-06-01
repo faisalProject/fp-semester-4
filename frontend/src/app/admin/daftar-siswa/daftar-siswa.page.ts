@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { environment } from 'src/environments/environment';
 import { NavController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-daftar-siswa',
   templateUrl: './daftar-siswa.page.html',
@@ -14,11 +15,17 @@ export class DaftarSiswaPage implements OnInit {
   constructor(
     private route: Router,
     private db:LocalStorageService,
-    private NavCtrl:NavController
+    private NavCtrl:NavController,
+    private alert:AlertController
   ) { }
 
   async ngOnInit() {
+   this.getData()
+  }
+
+  async getData(){
     const res = await fetch(environment.urlApi + "api/admin/show-student-data",{
+      mode:"cors",
       method:"GET",
       headers:{
         "Content-Type": "application/json",
@@ -32,9 +39,22 @@ export class DaftarSiswaPage implements OnInit {
     
   }
 
-  async delete(a:any){
-    
-
+   delete(a:any){
+    this.alert.create({
+      message: "Apakah anda yakin ingin menghapus data ini ?",
+      buttons:[{
+        text:"OK",
+        role:"OK",
+        handler:()=>{
+          this.hapus(a)
+          this.ngOnInit()
+        }
+      },{
+        text:"Cancel",
+        role:"Cancel"
+      }
+    ]
+    }).then((a)=>{a.present()})
   }
   async hapus(a:any){
     const res = await fetch (environment.urlApi + `api/admin/delete-student-data/${a}`,{
