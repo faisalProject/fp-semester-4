@@ -33,6 +33,10 @@ export class DaftarSiswaPage implements OnInit {
   }
 
   async delete(a:any){
+    
+
+  }
+  async hapus(a:any){
     const res = await fetch (environment.urlApi + `api/admin/delete-student-data/${a}`,{
       method:"Delete",
       headers:{
@@ -42,9 +46,8 @@ export class DaftarSiswaPage implements OnInit {
     })
 
     const data = await res.json()
-    console.log();
+    console.log(data);
     
-
   }
 
   studentDetails(id:any) {

@@ -227,9 +227,9 @@ class AdminController extends Controller
             ]);
 
             return response()->json([
-                "data" => [
-                    'msg' => 'kandidat berhasil dihapus'
-                ]
+              
+                    'msg' => 'kandidat berhasil dihapus',
+                    'statusCode'=> 200
             ], 200);
         }
 
@@ -434,9 +434,10 @@ class AdminController extends Controller
             StudentData::where('id_data', $id)->delete();
 
             return response()->json([
-                "data" => [
-                    'msg' => 'data siswa berhasil dihapus'
-                ]
+              
+                    'msg' => 'data siswa berhasil dihapus',
+                    'statusCode'=> 200
+
             ], 200);
         }       
 
