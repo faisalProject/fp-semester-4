@@ -17,9 +17,9 @@ export class TambahKandidatPage implements OnInit {
     visi:'',
     misi:''
   }
-  
   // DISINI JUGA
   picture:any;
+  img:any
 
   constructor(
     private db:LocalStorageService,
@@ -38,14 +38,6 @@ export class TambahKandidatPage implements OnInit {
 
   handleChange(event:any){
     this.form.kelas = event.detail.value;
-  }
-
-  // BERMASALAH DISINI BOY!!
-  onFileChange(event:FileList) {
-    const file = event.item(0)
-    if (file) {
-      this.picture = file
-    }
   }
 
   public kelas:any =[
@@ -68,26 +60,28 @@ export class TambahKandidatPage implements OnInit {
   }
 
   async tambah(){
+
+    const formData = new FormData();
+    formData.append('vision',this.form.visi)
+    formData.append('mission', this.form.misi)
+    formData.append('picture', this.img)
+    
     const res = await fetch(environment.urlApi + `api/admin/add-candidate/${this.id}`,{
       method:"POST",
       headers:{
-        "Content-Type": "application/json",
+       
         "Authorization": `Bearer ${this.db.get('token')}`
       },
-      body:JSON.stringify({
-        vision:this.form.visi,
-        mission:this.form.misi,
-        picture:this.picture,
-      })
+      body:formData
     })
 
     const data = await res.json();
     console.log(data);
-    console.log(this.picture);
+    console.log(this.img);
 
-    if(data.status !== 200){
+    if(data.statusCode !== 200){
       const alert = await this.alert.create({
-        header: 'Gagal',
+        header: data.msg,
         message: data.message,
         buttons: ['OK']
       });
@@ -97,12 +91,28 @@ export class TambahKandidatPage implements OnInit {
 
     const toast = await this.toast.create({
       message: 'Berhasil menambahkan kandidat',
-      duration: 2000
+      duration: 3000
     }).then((a)=>{
       a.present();
       this.route.navigateByUrl('/daftar-kandidat')
     })
 
+  }
+
+  loadImage(event:any){
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onload = ()=>{
+      // this.picture = reader.result;
+      this.picture = reader.result;
+      this.img = file;
+    }
+
+    reader.onerror = (error)=>{
+      console.log(error);
+    }
   }
 
 }

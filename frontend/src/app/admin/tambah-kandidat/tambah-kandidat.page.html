@@ -16,10 +16,11 @@
         </ion-select>
       </ion-item>
     </ion-list>
+    <img alt="picture" id="image" src="{{ picture }}">
+    <ion-input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" (change)="loadImage($event)" class="file" fill="outline"></ion-input>
     <ion-input [(ngModel)]="form.visi" label="Visi" labelPlacement="floating" fill="outline"></ion-input>
     <ion-input [(ngModel)]="form.misi" label="Misi" labelPlacement="floating" fill="outline"></ion-input>
     <!-- Masalah filenya disini!!! -->
-    <ion-input type="file" class="file" fill="outline"></ion-input>
     <ion-button expand="block" class="add-candidate" color="primary" (click)="tambah()">Tambah</ion-button>
   </div>
 </ion-content>

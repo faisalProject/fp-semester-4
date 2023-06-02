@@ -50,8 +50,8 @@ export class DaftarKandidatPage implements OnInit {
     this.route.navigateByUrl('tambah-kandidat')
   }
 
-  editCandidate() {
-    this.route.navigateByUrl('edit-data-kandidat')
+  editCandidate(id_kandidate:any) {
+    this.route.navigateByUrl(`edit-data-kandidat/${id_kandidate}`)
   }
 
   async hapus(id:any){

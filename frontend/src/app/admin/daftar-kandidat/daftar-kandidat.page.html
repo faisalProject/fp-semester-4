@@ -17,7 +17,7 @@
         <div class="bottom">
           <p> {{ isi.visi }} </p>
           <div class="action">
-            <ion-button color="warning" class="edit" (click)="editCandidate()">
+            <ion-button color="warning" class="edit" (click)="editCandidate(isi.id_kandidate)">
               <ion-icon name="create-outline"></ion-icon>
             </ion-button>
             <ion-button color="danger" (click)="hapus(isi.id_kandidate)" class="delete">

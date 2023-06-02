@@ -108,12 +108,11 @@ class AdminController extends Controller
             ]);
 
             return response()->json([
-                "data" => [
-                    'msg' => 'siswa berhasil di tambahkan menjadi kandidat',
-                    'name' => $student->student_data->name,
-                    'nis' => $student->student_data->nis,
-                    'email' => $student['email'],
-                ]
+                'msg' => 'siswa berhasil di tambahkan menjadi kandidat',
+                'name' => $student->student_data->name,
+                'nis' => $student->student_data->nis,
+                'email' => $student['email'],
+                'statusCode' => 200
             ], 200);
         }
 
@@ -205,9 +204,8 @@ class AdminController extends Controller
             ]);
 
             return response()->json([
-                "data" => [
-                    'msg' => 'kandidat berhasil diupdate'
-                ]
+                'msg' => 'kandidat berhasil diupdate',
+                'statusCode' => 200
             ], 200);
         }
 

@@ -4,11 +4,14 @@
   </div>
 
   <div class="body">
-    <div class="form">
-      <ion-textarea label="NIS" label-placement="floating" fill="outline" placeholder="NIS"></ion-textarea>
-      <ion-textarea label="Name" label-placement="floating" fill="outline" placeholder="Name"></ion-textarea>
-      <ion-input type="file" class="file" fill="outline"></ion-input>
-      <ion-button color="warning" class="edit">
+    <div class="form" *ngIf="isi">
+      <ion-textarea [(ngModel)]="isi.nis" label="NIS" [disabled]="true" label-placement="floating" fill="outline" placeholder="NIS"></ion-textarea>
+      <ion-textarea [(ngModel)]="isi.nama" label="Name" [disabled]="true" label-placement="floating" fill="outline" placeholder="Name"></ion-textarea>
+      <img alt="picture" id="image" src="{{ isi.gambar }}">
+      <ion-input  type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" (change)="loadImage($event)" class="file" fill="outline"></ion-input>
+      <ion-input [(ngModel)]="form.vision" label="Visi" placeholder ="{{isi.visi}}"labelPlacement="floating" fill="outline"></ion-input>
+      <ion-input [(ngModel)]="form.mission" label="Misi" placeholder="{{isi.misi}}" labelPlacement="floating" fill="outline"></ion-input>
+      <ion-button color="warning" class="edit" (click)="editKandidat()">
         <p>Ubah</p>
       </ion-button>
     </div>

@@ -81,7 +81,7 @@ const routes: Routes = [
         loadChildren: () => import('./admin/detail-akun/detail-akun.module').then( m => m.DetailAkunPageModule)
       },
       {
-        path: 'edit-data-kandidat',
+        path: 'edit-data-kandidat/:id',
         loadChildren: () => import('./admin/edit-data-kandidat/edit-data-kandidat.module').then( m => m.EditDataKandidatPageModule)
       },
       {
