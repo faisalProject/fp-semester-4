@@ -21,8 +21,7 @@ export class DaftarKandidatPage implements OnInit {
   ) {
     active.params.subscribe((a) => {
       this.ngOnInit()
-    }
-    )
+    })
    }
 
    

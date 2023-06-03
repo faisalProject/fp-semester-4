@@ -91,7 +91,7 @@ export class HomePage {
         }).then(a=> a.present())
       }
      
-    }else{
+    }else if(this.role === "admin"){
       try {
         const res = await fetch(environment.urlApi + "api/admin/login",{
           method:"POST",
@@ -109,12 +109,11 @@ export class HomePage {
         
         if (data.data.statusCode !== 200) {
           this.alertController.create({
-            message: 'Email atau Password Salah',
+            message: data.data.msg,
             buttons: ["OK"]
           }).then(a=>{
-            console.log(data);
-            
             a.present()
+            console.log(data);
           })
           return;
         }

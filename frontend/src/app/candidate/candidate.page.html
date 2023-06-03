@@ -4,12 +4,12 @@
 
     <img alt="Kandidat" src="{{ dt.gambar }}" class="kandidatPicture"/>
     <ion-card-header>
-      <h4 class="title">Nama: Lorem ipsum dolor </h4>
-      <h4 class="title">NIS: 12345678</h4>
+      <h4 class="title">Nama: {{ dt.nama }} </h4>
+      <h4 class="title">NIS: {{ dt.nis }}</h4>
     </ion-card-header>
     <ion-card-content>
     <p class="card-description">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dolor cumque quibusdam perspiciatis commodi. Omnis, eveniet. Velit in dolor ut?
+      {{ dt.visi }}
     </p>  
     </ion-card-content>
     <ion-button class="btn-more" (click)="open(dt.id_kandidate)">

@@ -29,7 +29,6 @@ export class CandidatePage implements OnInit {
 
   open(env:any){
     this.db.set('id', env)
-    
     this.router.navigateByUrl(`candidate-details/${this.db.get('id')}`)
   }
 
