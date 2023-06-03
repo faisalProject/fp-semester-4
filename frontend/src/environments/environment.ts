@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  urlApi: "http://localhost:8000/",
+  // urlApi: "http://localhost:8000/",
+  urlApi: "https://e-voting.mengkodingkan.dev/",
   production: false,
 }
 
