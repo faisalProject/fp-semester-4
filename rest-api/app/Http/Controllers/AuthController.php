@@ -28,15 +28,15 @@ class AuthController extends Controller
         if(!$studentDataNIS) {
             return response()->json([
                 'msg' => 'NIS tidak terdaftar',
-                'statusCode' => 401
-            ], 401);
+                'statusCode' => 404
+            ], 404);
         }
         
         if($studentDataNIS->email !== $request->email) {
             return response()->json([
                 'msg' => 'Email tidak terdaftar',
-                'statusCode' => 401
-            ], 401);
+                'statusCode' => 404
+            ], 404);
         }
 
         $class_name = $request->input('class_name');
@@ -51,8 +51,8 @@ class AuthController extends Controller
         ])) {
             return response()->json([
                 'msg' => 'Kelas tidak terdaftar',
-                'statusCode' => 401
-            ], 401);
+                'statusCode' => 404
+            ], 404);
         }
 
         if($validator->fails()) {
@@ -83,12 +83,11 @@ class AuthController extends Controller
         ]);
 
         return response()->json([
-            "data" => [
-                'msg' => 'Berhasil register',
-                'nama' => $studentDataNIS['name'],
-                'email' => $studentValidated['email'],
-                'status' => 'siswa'
-            ],
+            'msg' => 'Berhasil register',
+            'nama' => $studentDataNIS['name'],
+            'email' => $studentValidated['email'],
+            'status' => 'siswa',
+            'statusCode' => 200,
             "token" => "{$token}"
         ], 200);
 
