@@ -11,7 +11,7 @@
         <p class="small"> {{isi.email}}</p>
       </div>
       <div class="right">
-        <ion-button color="primary" class="add">
+        <ion-button color="primary" [disabled]="isi.status === 'kandidat'" (click)="addCandidate(isi.id)" class="add">
           <ion-icon name="person-add" color="light"></ion-icon>
         </ion-button>
       </div>
