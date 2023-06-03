@@ -178,8 +178,10 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'msg' => 'Email atau password salah',
-            'statusCode' => 422
+            "data"=> [
+                'msg' => 'Email atau password salah',
+                'statusCode' => 422
+            ]
         ], 422);
     }
 }
