@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,8 +13,13 @@ export class DataSuaraPage implements OnInit {
   isi: any = [];
   constructor(
     // private route: Router,
-    private db: LocalStorageService
-  ) { }
+    private db: LocalStorageService,
+    private active: ActivatedRoute,
+  ) {
+    active.params.subscribe((a) => {
+      this.ngOnInit()
+    })
+   }
 
   async ngOnInit() {
     try {
