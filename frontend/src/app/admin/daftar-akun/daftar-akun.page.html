@@ -6,8 +6,15 @@
 
   <div class="body">
     <div class="row" *ngFor = "let isi of isi">
-      <p (click)="accountDetails(isi.id)" class="medium">{{isi.nama}}</p>
-      <p class="small"> {{isi.email}}</p>
+      <div class="left">
+        <p (click)="accountDetails(isi.id)" class="medium">{{isi.nama}}</p>
+        <p class="small"> {{isi.email}}</p>
+      </div>
+      <div class="right">
+        <ion-button color="primary" class="add">
+          <ion-icon name="person-add" color="light"></ion-icon>
+        </ion-button>
+      </div>
     </div>
   </div>
 

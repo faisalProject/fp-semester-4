@@ -82,10 +82,10 @@ export class EditDataKandidatPage implements OnInit {
     })
 
     const data = await res.json();
-    console.log(data);
+    console.log("daya");
 
     if(data.statusCode !== 200){
-      const alert = await this.alert.create({
+      this.alert.create({
         header: 'Gagal',
         message: data.msg,
         buttons: ['OK']
@@ -95,14 +95,14 @@ export class EditDataKandidatPage implements OnInit {
       return
     }
 
-    const toast = await this.toast.create({
+    this.toast.create({
       message: data.msg,
       duration: 2000
     }).then(res=>{
       res.present()
+      this.route.navigateByUrl('/daftar-kandidat'),
       this.form.vision = '',
-      this.form.mission = '',
-      this.route.navigateByUrl('/daftar-kandidat')
+      this.form.mission = ''
     })
 
 
