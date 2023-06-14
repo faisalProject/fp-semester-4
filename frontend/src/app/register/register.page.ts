@@ -83,7 +83,7 @@ export class RegisterPage implements OnInit {
 
           const data = await req.json()
           console.log(data)
-          if(data.statusCode !== 200){
+          if(data.data.statusCode !== 200){
             this.alert.create({
               message: data.msg,
               buttons: ['OK']
