@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { environment } from 'src/environments/environment';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-daftar-akun',
@@ -13,7 +14,8 @@ export class DaftarAkunPage implements OnInit {
   isi:any =[];
   constructor(
     private db: LocalStorageService,
-    private route: Router
+    private route: Router,
+    private navCtrl:NavController
     ) { }
 
   async ngOnInit() {
@@ -36,6 +38,10 @@ export class DaftarAkunPage implements OnInit {
     
   }
   
+}
+
+addCandidate(id:any){
+  this.navCtrl.navigateForward(`tambah-kandidat/${id}`)
 }
 
 accountDetails(id:any) {

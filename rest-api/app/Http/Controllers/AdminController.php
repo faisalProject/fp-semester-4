@@ -22,6 +22,7 @@ class AdminController extends Controller
                 'id' => $student->id_student,
                 'nama' => $student->student_data->name,
                 'email' => $student->student_data->email,
+                'status' => $student->status,
                 'last_login' => $student->last_login,
                 'created_at' => $student->created_at,
                 'updated_at' => $student->updated_at

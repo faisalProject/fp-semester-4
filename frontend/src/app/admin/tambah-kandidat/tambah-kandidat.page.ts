@@ -56,7 +56,7 @@ export class TambahKandidatPage implements OnInit {
 
     const data = await res.json();
     this.isi = data.data.data
-    console.log(data.data.data);
+    console.log(data);
   }
 
   async tambah(){
@@ -69,7 +69,6 @@ export class TambahKandidatPage implements OnInit {
     const res = await fetch(environment.urlApi + `api/admin/add-candidate/${this.id}`,{
       method:"POST",
       headers:{
-       
         "Authorization": `Bearer ${this.db.get('token')}`
       },
       body:formData

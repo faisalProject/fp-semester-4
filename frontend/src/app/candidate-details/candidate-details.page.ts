@@ -11,6 +11,7 @@ import { StorageService } from '../localStorage';
 })
 export class CandidateDetailsPage implements OnInit {
   isVoted: boolean = false;
+  json:any;
 
   public isi = {
     data:{
@@ -34,9 +35,21 @@ export class CandidateDetailsPage implements OnInit {
     private db: StorageService,
     private navCtrl: NavController,
     private route: ActivatedRoute,
-    private toastCtrl: ToastController
- 
-    ) { }
+    private toastCtrl: ToastController,
+    private active: ActivatedRoute
+    ) { 
+      active.params.subscribe((a)=>{
+        this.ngOnInit()
+      })
+    }
+
+  ngOnInit() {
+    this.id =this.route.snapshot.paramMap.get('id')
+    console.log('variabel' + this.id);
+    
+    this.candidat();
+    this.navCtrl.pop
+  }
 
   pilih(){
     const alert = this.alertController.create({
@@ -73,15 +86,6 @@ export class CandidateDetailsPage implements OnInit {
     }
   }
 
- 
-  ngOnInit() {
-    this.id =this.route.snapshot.paramMap.get('id')
-    console.log('variabel' + this.id);
-    
-    this.candidat();
-    this.navCtrl.pop
-  }
-
   async submit(){
 
     try {
@@ -92,11 +96,11 @@ export class CandidateDetailsPage implements OnInit {
           'Authorization': `Bearer ${this.db.get('token')}`
         }
       });
-      const json = await res.json();
-      const message = json.toString();
-      console.log('ini json: ' + message);
+      const data = await res.json();
+      this.json = data.data
+      console.log('ini json: ' + this.json);
       
-      if(message.statusCode !== 200){
+      if(this.json.statusCode !== 200){
         this.alertController.create({
           message: 'Gagal Memilih Kandidat!',
           buttons: ["OK"]
@@ -106,8 +110,11 @@ export class CandidateDetailsPage implements OnInit {
       
     this.toastCtrl.create({
       message:"Berhasil!",
-      duration:1000
-    }).then(a => a.present())
+      duration:2000
+    }).then(a=>{
+      a.present()
+      this.ngOnInit()
+    })
       
     } catch (error) {
       console.log(error);

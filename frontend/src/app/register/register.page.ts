@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { StorageService } from '../localStorage';
 import { type } from 'os';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { ok } from 'assert';
 @Component({
   selector: 'app-register',
@@ -12,7 +12,7 @@ import { ok } from 'assert';
 })
 export class RegisterPage implements OnInit {
   private item:any;
-
+  isi:any;
   form:any={
     nis:'',
     email:'',
@@ -30,6 +30,7 @@ export class RegisterPage implements OnInit {
     private router:Router,
     private local : StorageService,
     private alert:AlertController,
+    private toast:ToastController
     ) { }
 
   login(){
@@ -89,11 +90,17 @@ export class RegisterPage implements OnInit {
               buttons: ['OK']
             }).then(a=>{
               a.present()
-              ;
-              
             })
             return;
           }
+
+          this.toast.create({
+            message: data.msg,
+            duration: 2000
+          }).then(a=>{
+            a.present()
+            this.router.navigateByUrl('home')
+          })
           
         }catch (error:any) {
           this.alert.create({

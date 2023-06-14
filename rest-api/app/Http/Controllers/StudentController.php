@@ -88,13 +88,12 @@ class StudentController extends Controller
 
             
             return response()->json([
-                "data" => [
-                    'msg' => 'berahasil memilih kandidat',
-                    'data' => [
-                        'id' => $candidate->id_candidate,
-                        'nama' => $candidate->student->student_data->name,
-                        'email' => $candidate->student->email
-                    ]
+                'msg' => 'berhasil memilih kandidat',
+                'data' => [
+                    'id' => $candidate->id_candidate,
+                    'nama' => $candidate->student->student_data->name,
+                    'email' => $candidate->student->email,
+                    'statusCode' => 200
                 ]
             ], 200);
     
